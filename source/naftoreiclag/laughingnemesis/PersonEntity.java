@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import naftoreiclag.applicationstuff.Application;
+
 public class PersonEntity
 {
 	private Vida vida = new Vida();
@@ -11,6 +13,8 @@ public class PersonEntity
 	public double y;
 	
 	public Emotion emotion;
+	
+	public Inventory inventory;
 	
 	Random random = new Random();
 	
