@@ -5,21 +5,21 @@ import java.util.List;
 
 public class World
 {
-	public List<PersonEntity> people = new ArrayList<PersonEntity>();
+	public List<Person> people = new ArrayList<Person>();
 	
 	// Artifical constraint
 	public static final double worldSize = 300;
 	
 	public World()
 	{
-		people.add(new PersonEntity());
-		people.add(new PersonEntity());
+		people.add(new Person());
+		people.add(new Person());
 	}
 	
 	public boolean tick(long delta)
 	{
 		boolean shouldRedraw = true;
-		for(PersonEntity person : people)
+		for(Person person : people)
 		{
 			person.tick(delta);
 		}

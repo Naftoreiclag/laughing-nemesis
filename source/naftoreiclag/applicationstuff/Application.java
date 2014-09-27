@@ -30,11 +30,13 @@ public class Application
 		
 		painter.drawRect(-world.worldSize, -world.worldSize, world.worldSize * 2, world.worldSize * 2);
 		
-		for(PersonEntity person : world.people)
+		for(Person person : world.people)
 		{
 			painter.translate(person.x, person.y);
 			
 			painter.drawCircle(0, 0, 20);
+			painter.drawLine(Math.cos(person.lookAngle) * 15, Math.sin(person.lookAngle) * 15, 
+					Math.cos(person.lookAngle) * 20, Math.sin(person.lookAngle) * 20);
 
 			painter.translate(-person.x, -person.y);
 		}

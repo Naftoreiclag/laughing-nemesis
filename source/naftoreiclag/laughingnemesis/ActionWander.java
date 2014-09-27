@@ -13,7 +13,7 @@ public class ActionWander extends Action
 	}
 	
 	@Override
-	public boolean tick(PersonEntity vi, double delta)
+	public boolean tick(Person vi, double delta)
 	{
 		boolean finished = false;
 		
