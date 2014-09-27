@@ -6,10 +6,13 @@ import java.util.Random;
 
 public class Person
 {
-	public double x;
-	public double y;
+	public Vector2d location = new Vector2d();
 	
 	public Random random = new Random();
+	private ImaginaryWorld world = new ImaginaryWorld();
+	
+	public Gender gender;
+	public String name;
 	
 	public double lookAngle = random.nextDouble() * Math.PI * 2d;
 	
@@ -19,15 +22,19 @@ public class Person
 	
 	public Person()
 	{
-		
+		gender = Gender.getRandomGender();
+		name = Names.getRandomName(gender);
 	}
 	
 	public void tick(double delta)
 	{
+		Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
 		
-		if(this.x < -World.worldSize) { this.x = -World.worldSize; }
-		if(this.y < -World.worldSize) { this.y = -World.worldSize; }
-		if(this.x > World.worldSize) { this.x = World.worldSize; }
-		if(this.y > World.worldSize) { this.y = World.worldSize; }
+		location.add(what.multiplyLocal(delta));
+		
+		if(location.a < -World.worldSize) { location.a = -World.worldSize; }
+		if(location.b < -World.worldSize) { location.b = -World.worldSize; }
+		if(location.a > World.worldSize) { location.a = World.worldSize; }
+		if(location.b > World.worldSize) { location.b = World.worldSize; }
 	}
 }

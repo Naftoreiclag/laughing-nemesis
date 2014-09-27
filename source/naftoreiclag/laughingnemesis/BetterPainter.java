@@ -7,8 +7,10 @@
 package naftoreiclag.laughingnemesis;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,5 +96,18 @@ public class BetterPainter
 	public void drawLine(double x1, double y1, double x2, double y2)
 	{
 		graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+	}
+
+	public void drawString(String string, double x, double y)
+	{
+		graphics.drawString(string, (float) x, (float) y);
+	}
+
+	public void drawStringCentered(String string, double x, double y)
+	{
+		Rectangle2D javaDumbRectangle = graphics.getFontMetrics().getStringBounds(string, graphics);
+		
+		// why
+		graphics.drawString(string, (float) (x - (javaDumbRectangle.getWidth() / 2d)), (float) (y + (javaDumbRectangle.getHeight() / 4d)));
 	}
 }

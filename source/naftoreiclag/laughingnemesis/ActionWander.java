@@ -25,8 +25,7 @@ public class ActionWander extends Action
 			finished = true;
 		}
 		
-		vi.x += direction.a;
-		vi.y += direction.b;
+		vi.location.addLocal(direction);
 		
 		return finished;
 	}

@@ -15,9 +15,12 @@ public class Vector2d
 	public static Random rand = new Random();
 	public static Vector2d randomNormal()
 	{
-		double deg = rand.nextDouble() * Math.PI * 2;
-		
-		return new Vector2d(Math.sin(deg), Math.cos(deg));
+		return getNormalFromAngle(rand.nextDouble() * Math.PI * 2);
+	}
+
+	public static Vector2d getNormalFromAngle(double angle)
+	{
+		return new Vector2d(Math.sin(angle), Math.cos(angle));
 	}
 	
 	// TODO: add some vector pool or something for recycling of Vector2d's

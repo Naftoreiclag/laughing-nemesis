@@ -69,6 +69,9 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 			long lastTick = System.currentTimeMillis();
 			long delta;
 			
+			int numTicks = 0;
+			long lastTimeWeNaggedUser = lastTick;
+			
 			@Override
 			public void run()
 			{
@@ -82,8 +85,16 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 						
 						if(Application.staticTick(delta))
 						{
-							repaint();
 						}
+						repaint();
+						numTicks ++;
+					}
+					
+					if(System.currentTimeMillis() - lastTimeWeNaggedUser > 1000)
+					{
+						lastTimeWeNaggedUser = System.currentTimeMillis();
+						System.out.println("TPS: " + numTicks);
+						numTicks = 0;
 					}
 				}
 		    }

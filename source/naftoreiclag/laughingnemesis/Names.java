@@ -1,8 +1,21 @@
 package naftoreiclag.laughingnemesis;
 
+import java.util.Random;
+
 public class Names
 {
+	public static Random rand = new Random();
 	
+	public static String getRandomName(Gender gender)
+	{
+		switch(gender)
+		{
+			case male: return maleNames[rand.nextInt(maleNames.length)];
+			case female: return femaleNames[rand.nextInt(femaleNames.length)];
+		}
+		
+		return "Nullson";
+	}
 	
 	public static String[] maleNames = new String[]
 	{
