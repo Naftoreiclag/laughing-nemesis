@@ -6,21 +6,18 @@
 
 package naftoreiclag.laughingnemesis;
 
-import java.util.Random;
-
 // Version 18
 
 public class Vector2d
 {
-	public static Random rand = new Random();
 	public static Vector2d randomNormal()
 	{
-		return getNormalFromAngle(rand.nextDouble() * Math.PI * 2);
+		return getNormalFromAngle(GR.r.nextDouble() * Math.PI * 2);
 	}
 
 	public static Vector2d getNormalFromAngle(double angle)
 	{
-		return new Vector2d(Math.sin(angle), Math.cos(angle));
+		return new Vector2d(Math.cos(angle), Math.sin(angle));
 	}
 	
 	// TODO: add some vector pool or something for recycling of Vector2d's

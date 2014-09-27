@@ -16,7 +16,7 @@ public class World
 		people.add(new Person());
 	}
 	
-	public boolean tick(long delta)
+	public boolean tick(double delta)
 	{
 		boolean shouldRedraw = true;
 		for(Person person : people)

@@ -83,7 +83,7 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 					{
 						lastTick = System.currentTimeMillis();
 						
-						if(Application.staticTick(delta))
+						if(Application.staticTick(delta / 1000d))
 						{
 						}
 						repaint();

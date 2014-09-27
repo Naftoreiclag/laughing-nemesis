@@ -12,7 +12,7 @@ public class Application
 	
 	public World world = new World();
 	
-	public boolean tick(long delta)
+	public boolean tick(double delta)
 	{
 		return world.tick(delta);
 	}
@@ -56,7 +56,7 @@ public class Application
 	
 	
 	public static Application dumbSingleton = new Application();
-	public static boolean staticTick(long delta)
+	public static boolean staticTick(double delta)
 	{
 		return dumbSingleton.tick(delta);
 	}
