@@ -12,11 +12,13 @@ public class Person
 	public Gender gender;
 	public String name;
 	
+	public static final double fov = Math.PI / 4;
+	
 	public double lookAngle = GR.r.nextDouble() * Math.PI * 2d;
 	
 	public Inventory inventory;
 	
-	public boolean walking;
+	public boolean walking = false;
 	
 	private List<Action> actionQueue = new ArrayList<Action>();
 	
@@ -30,8 +32,11 @@ public class Person
 	
 	public void tick(double delta)
 	{
-		Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
-		location.addLocal(what.multiplyLocal(delta * 30));
+		if(walking)
+		{
+			Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
+			location.addLocal(what.multiplyLocal(delta * 30));
+		}
 		
 		if(location.a < -World.worldSize) { location.a = -World.worldSize; }
 		if(location.b < -World.worldSize) { location.b = -World.worldSize; }
