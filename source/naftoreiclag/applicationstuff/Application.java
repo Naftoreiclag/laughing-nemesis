@@ -2,36 +2,19 @@ package naftoreiclag.applicationstuff;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.List;
 
-import naftoreiclag.laughingnemesis.BetterPainter;
-import naftoreiclag.laughingnemesis.PersonEntity;
+import naftoreiclag.laughingnemesis.*;
 
 public class Application
 {
-	public List<PersonEntity> people = new ArrayList<PersonEntity>();
-	
-	public static final double worldSize = 300;
-	
 	public double camX = 0;
 	public double camY = 0;
 	
-	public Application()
-	{
-		people.add(new PersonEntity());
-		people.add(new PersonEntity());
-	}
+	public World world = new World();
 	
 	public boolean tick(long delta)
 	{
-		boolean shouldRedraw = true;
-		for(PersonEntity person : people)
-		{
-			person.tick(delta);
-		}
-		
-		return shouldRedraw;
+		return world.tick(delta);
 	}
 	
 	public void paint(Graphics2D graphics2D, int width, int height)
@@ -45,9 +28,9 @@ public class Application
 
 		painter.setColor(Color.BLACK);
 		
-		painter.drawRect(-worldSize, -worldSize, worldSize * 2, worldSize * 2);
+		painter.drawRect(-world.worldSize, -world.worldSize, world.worldSize * 2, world.worldSize * 2);
 		
-		for(PersonEntity person : people)
+		for(PersonEntity person : world.people)
 		{
 			painter.translate(person.x, person.y);
 			

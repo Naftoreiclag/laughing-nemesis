@@ -48,9 +48,9 @@ public class PersonEntity
 			actionQueue.remove(0);
 		}
 		
-		if(this.x < -Application.worldSize) { this.x = -Application.worldSize; }
-		if(this.y < -Application.worldSize) { this.y = -Application.worldSize; }
-		if(this.x > Application.worldSize) { this.x = Application.worldSize; }
-		if(this.y > Application.worldSize) { this.y = Application.worldSize; }
+		if(this.x < -World.worldSize) { this.x = -World.worldSize; }
+		if(this.y < -World.worldSize) { this.y = -World.worldSize; }
+		if(this.x > World.worldSize) { this.x = World.worldSize; }
+		if(this.y > World.worldSize) { this.y = World.worldSize; }
 	}
 }
