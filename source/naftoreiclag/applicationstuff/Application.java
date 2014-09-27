@@ -34,7 +34,7 @@ public class Application
 		painter.saveTransform(transformKey);
 		for(Person person : world.people)
 		{
-			painter.translate(person.location.a, person.location.b);
+			painter.translate(person.circle.loc.a, person.circle.loc.b);
 			
 			painter.drawCircle(0, 0, 20);
 			painter.drawLine(Math.cos(person.lookAngle) * 15, Math.sin(person.lookAngle) * 15, 

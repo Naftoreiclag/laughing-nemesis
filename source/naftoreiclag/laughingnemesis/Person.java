@@ -3,14 +3,16 @@ package naftoreiclag.laughingnemesis;
 import java.util.ArrayList;
 import java.util.List;
 
+import naftoreiclag.pigcollision.Circle;
+
 public class Person
 {
-	public Vector2d location = new Vector2d();
-	
 	private ImaginaryWorld world = new ImaginaryWorld();
 	
 	public Gender gender;
 	public String name;
+	
+	public Circle circle;
 	
 	public static final double fov = Math.PI / 4;
 	
@@ -18,7 +20,7 @@ public class Person
 	
 	public Inventory inventory;
 	
-	public boolean walking = false;
+	public boolean walking = true;
 	
 	private List<Action> actionQueue = new ArrayList<Action>();
 	
@@ -27,7 +29,7 @@ public class Person
 		gender = Gender.getRandomGender();
 		name = Names.getRandomName(gender);
 		
-		location = Vector2d.randomNormal().multiplyLocal(50d);
+		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
 	}
 	
 	public void tick(double delta)
@@ -35,12 +37,14 @@ public class Person
 		if(walking)
 		{
 			Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
-			location.addLocal(what.multiplyLocal(delta * 30));
+			circle.motion = what.multiplyLocal(30);
 		}
+		/*
 		
 		if(location.a < -World.worldSize) { location.a = -World.worldSize; }
 		if(location.b < -World.worldSize) { location.b = -World.worldSize; }
 		if(location.a > World.worldSize) { location.a = World.worldSize; }
 		if(location.b > World.worldSize) { location.b = World.worldSize; }
+		*/
 	}
 }
