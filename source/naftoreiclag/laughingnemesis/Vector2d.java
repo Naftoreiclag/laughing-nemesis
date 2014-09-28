@@ -158,6 +158,11 @@ public class Vector2d
 		return ((this.a - other.a) * (this.a - other.a)) + ((this.b - other.b) * (this.b - other.b));
 	}
 	
+	public double distanceSquared(double a, double b)
+	{
+		return ((this.a - a) * (this.a - a)) + ((this.b - b) * (this.b - b));
+	}
+	
 	public double magnitudeSquared()
 	{
 		return (this.a * this.a) + (this.b * this.b);

@@ -105,9 +105,60 @@ public class BetterPainter
 
 	public void drawStringCentered(String string, double x, double y)
 	{
-		Rectangle2D javaDumbRectangle = graphics.getFontMetrics().getStringBounds(string, graphics);
+		Rectangle2D javaDumbRectangle = stringBox(string);
 		
 		// why
 		graphics.drawString(string, (float) (x - (javaDumbRectangle.getWidth() / 2d)), (float) (y + (javaDumbRectangle.getHeight() / 4d)));
+	}
+	
+	public Rectangle2D stringBox(String string)
+	{
+		return graphics.getFontMetrics().getStringBounds(string, graphics);
+	}
+
+	double printX = 0;
+	double printY = 0;
+	double line = 1;
+	double offset = 0;
+	
+	public void beginPrinting(double x, double y)
+	{
+		printX = x;
+		printY = y;
+	}
+	
+	public void print(String string)
+	{
+		this.drawString(string, offset + printX, printY + (line * 15));
+		offset += stringBox(string).getWidth();
+	}
+	
+	public void print(Object object)
+	{
+		this.print(object.toString());
+	}
+	
+	public void println()
+	{
+		offset = 0;
+		++ line;
+	}
+
+	public void println(String string)
+	{
+		this.print(string);
+		this.println();
+	}
+	
+	public void println(Object object)
+	{
+		this.print(object);
+		this.println();
+	}
+	
+	public void endPrinting()
+	{
+		offset = 0;
+		line = 1;
 	}
 }

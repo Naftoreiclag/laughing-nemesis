@@ -28,7 +28,7 @@ public class Person
 	
 	public World world;
 	
-	private MemoryCollection memories;
+	private MemoryCollection memories = new MemoryCollection();
 	
 	private List<Action> actionQueue = new ArrayList<Action>();
 	
@@ -44,6 +44,30 @@ public class Person
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
 	}
 	
+	public Person findNearestPerson()
+	{
+		Person nearest = null;
+		double bestDist = Double.MAX_VALUE;
+		
+		for(Person person : world.people)
+		{
+			if(person == this)
+			{
+				continue;
+			}
+			
+			double distanceToThisPerson = person.circle.loc.distanceSquared(this.circle.loc);
+			
+			if(distanceToThisPerson < bestDist)
+			{
+				nearest = person;
+				bestDist = distanceToThisPerson;
+			}
+		}
+		
+		return nearest;
+	}
+	
 	public void tick(double delta)
 	{
 		memories.tick(delta);
@@ -53,8 +77,17 @@ public class Person
 			case lonely:
 			{
 				// make friends
+				Person newFriend = findNearestPerson();
+				
+				if(newFriend == null)
+				{
+					break;
+				}
 				
 				
+				
+				
+				break;
 			}
 		}
 		
@@ -63,5 +96,10 @@ public class Person
 			Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
 			circle.motion = what.multiplyLocal(30);
 		}
+	}
+
+	public Emotion getEmotion()
+	{
+		return memories.emotion;
 	}
 }

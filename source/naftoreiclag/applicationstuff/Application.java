@@ -10,13 +10,40 @@ public class Application
 	public double camX = 0;
 	public double camY = 0;
 	
+	public double realMx;
+	public double realMy;
+	
 	public World world = new World();
+	
+	private Person analyze = null;
 	
 	public boolean tick(double delta)
 	{
+		realMx = camX + (MainPanel.mouseX - (MainPanel.width / 2));
+		realMy = camY + (MainPanel.mouseY - (MainPanel.height / 2));
+		if(MainPanel.leftDown)
+		{
+			analyze = findPersonUnderMouse();
+		}
+		
 		return world.tick(delta);
 	}
 	
+	private Person findPersonUnderMouse()
+	{
+		for(Person person : world.people)
+		{
+			if(person.circle.loc.distanceSquared(
+					realMx, 
+					realMy) <= 400)
+			{
+				return person;
+			}
+		}
+		
+		return null;
+	}
+
 	public void paint(Graphics2D graphics2D, int width, int height)
 	{
 		BetterPainter painter = new BetterPainter(graphics2D);
@@ -30,8 +57,8 @@ public class Application
 		
 		painter.drawRect(-world.worldSize, -world.worldSize, world.worldSize * 2, world.worldSize * 2);
 		
-		String transformKey = "beforePeople";
-		painter.saveTransform(transformKey);
+		String beforePeople = "beforePeople";
+		painter.saveTransform(beforePeople);
 		for(Person person : world.people)
 		{
 			painter.translate(person.circle.loc.a, person.circle.loc.b);
@@ -44,9 +71,27 @@ public class Application
 			
 			painter.drawStringCentered(person.name, 0, -30);
 
-			painter.loadTransform(transformKey);
+			painter.loadTransform(beforePeople);
 		}
-		painter.deleteTransform(transformKey);
+		painter.deleteTransform(beforePeople);
+		
+		if(analyze != null)
+		{
+			String beforeAnalyzer = "beforeAnalyzer";
+			painter.saveTransform(beforeAnalyzer);
+			
+			painter.beginPrinting(realMx + 30, realMy + 30);
+			
+			painter.print("Name: ");
+			painter.println(analyze.name);
+			painter.print("Emotion: ");
+			painter.println(analyze.getEmotion());
+			
+			painter.endPrinting();
+			
+			painter.loadTransformAndDelete(beforeAnalyzer);
+		}
+		
 	}
 
 	

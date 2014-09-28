@@ -38,7 +38,7 @@ public class MemoryCollection
 		{
 			if(mem instanceof FriendshipMemory)
 			{
-				emotion = Emotion.nondescript;
+				emotion = Emotion.happy;
 			}
 		}
 	}
