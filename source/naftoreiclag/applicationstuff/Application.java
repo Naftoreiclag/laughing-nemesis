@@ -37,8 +37,10 @@ public class Application
 			painter.translate(person.circle.loc.a, person.circle.loc.b);
 			
 			painter.drawCircle(0, 0, 20);
-			painter.drawLine(Math.cos(person.lookAngle) * 15, Math.sin(person.lookAngle) * 15, 
-					Math.cos(person.lookAngle) * 20, Math.sin(person.lookAngle) * 20);
+			painter.drawLine(Math.cos(person.lookAngle - Person.fov) * 25, Math.sin(person.lookAngle - Person.fov) * 25, 
+					Math.cos(person.lookAngle - Person.fov) * 20, Math.sin(person.lookAngle - Person.fov) * 20);
+			painter.drawLine(Math.cos(person.lookAngle + Person.fov) * 25, Math.sin(person.lookAngle + Person.fov) * 25, 
+					Math.cos(person.lookAngle + Person.fov) * 20, Math.sin(person.lookAngle + Person.fov) * 20);
 			
 			painter.drawStringCentered(person.name, 0, -30);
 

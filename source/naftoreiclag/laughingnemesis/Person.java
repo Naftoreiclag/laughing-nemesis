@@ -3,11 +3,15 @@ package naftoreiclag.laughingnemesis;
 import java.util.ArrayList;
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.memory.Memory;
+import naftoreiclag.laughingnemesis.memory.MemoryCollection;
 import naftoreiclag.pigcollision.Circle;
 
 public class Person
 {
-	private ImaginaryWorld world = new ImaginaryWorld();
+	//private ImaginaryWorld world = new ImaginaryWorld();
+	
+	public Face face;
 	
 	public Gender gender;
 	public String name;
@@ -20,31 +24,44 @@ public class Person
 	
 	public Inventory inventory;
 	
-	public boolean walking = true;
+	public boolean walking;
+	
+	public World world;
+	
+	private MemoryCollection memories;
 	
 	private List<Action> actionQueue = new ArrayList<Action>();
 	
-	public Person()
+	public Person(World world)
 	{
+		this.world = world;
+		
 		gender = Gender.getRandomGender();
 		name = Names.getRandomName(gender);
+		
+		face = new Face();
 		
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
 	}
 	
 	public void tick(double delta)
 	{
+		memories.tick(delta);
+		
+		switch(memories.emotion)
+		{
+			case lonely:
+			{
+				// make friends
+				
+				
+			}
+		}
+		
 		if(walking)
 		{
 			Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
 			circle.motion = what.multiplyLocal(30);
 		}
-		/*
-		
-		if(location.a < -World.worldSize) { location.a = -World.worldSize; }
-		if(location.b < -World.worldSize) { location.b = -World.worldSize; }
-		if(location.a > World.worldSize) { location.a = World.worldSize; }
-		if(location.b > World.worldSize) { location.b = World.worldSize; }
-		*/
 	}
 }

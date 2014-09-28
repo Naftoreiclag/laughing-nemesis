@@ -19,7 +19,6 @@ public class World
 	{
 		addPerson();
 		addPerson();
-		addPerson();
 		
 		space.lines.add(new Line(new Vector2d(-worldSize, -worldSize), new Vector2d(worldSize, -worldSize)));
 		space.lines.add(new Line(new Vector2d(worldSize, -worldSize), new Vector2d(worldSize, worldSize)));
@@ -29,7 +28,7 @@ public class World
 
 	private void addPerson()
 	{
-		Person person = new Person();
+		Person person = new Person(this);
 		people.add(person);
 		space.circles.add(person.circle);
 	}

@@ -1,6 +1,7 @@
 package naftoreiclag.laughingnemesis;
 
-public class Emotion
+public enum Emotion
 {
-
+	lonely, nondescript, happy,
+	
 }
