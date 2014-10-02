@@ -3,6 +3,7 @@ package naftoreiclag.laughingnemesis;
 import java.util.ArrayList;
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.communication.ConversationSpace;
 import naftoreiclag.pigcollision.Line;
 import naftoreiclag.pigcollision.Space;
 
@@ -10,6 +11,7 @@ public class World
 {
 	public List<Person> people = new ArrayList<Person>();
 	
+	public ConversationSpace convsp = new ConversationSpace();
 	public Space space = new Space();
 	
 	// Artifical constraint

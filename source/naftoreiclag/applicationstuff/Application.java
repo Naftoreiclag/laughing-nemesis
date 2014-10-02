@@ -86,6 +86,9 @@ public class Application
 			painter.println(analyze.name);
 			painter.print("Emotion: ");
 			painter.println(analyze.getEmotion());
+			painter.print("Thinking: ");
+			painter.println(analyze.getThought());
+			
 			
 			painter.endPrinting();
 			
