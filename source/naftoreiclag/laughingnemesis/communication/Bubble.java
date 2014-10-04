@@ -6,4 +6,11 @@ public class Bubble
 	public static int goodbye = 1;
 	public static int whatisyourfavcolor = 2;
 	public static int myfavcoloris = 3;
+	
+	public final int type;
+	
+	public Bubble(int type)
+	{
+		this.type = type;
+	}
 }

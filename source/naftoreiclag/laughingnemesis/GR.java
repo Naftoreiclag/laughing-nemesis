@@ -11,7 +11,7 @@ public class GR
 	// This method simulates if true would have been returned given a certain delta.
 	public static boolean chanceOverTime(double delta, double probability)
 	{
-		return r.nextDouble() > Math.pow(probability, delta);
+		return r.nextDouble() > Math.pow(1 - probability, delta);
 	}
 	
 	/*

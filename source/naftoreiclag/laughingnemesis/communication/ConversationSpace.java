@@ -10,7 +10,7 @@ public class ConversationSpace
 {
 	public List<Bubble> bubbles = new ArrayList<Bubble>();
 	
-	public World world = new World();
+	public World world;
 	
 	public ConversationSpace(World world)
 	{
@@ -21,7 +21,7 @@ public class ConversationSpace
 	{
 		for(Person person : world.people)
 		{
-			
+			person.receiveMessage(bubble);
 		}
 	}
 }

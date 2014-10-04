@@ -6,7 +6,9 @@
 
 package naftoreiclag.laughingnemesis;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -20,12 +22,17 @@ public class BetterPainter
 	public Graphics2D getGraphics() { return graphics; }
 	private AffineTransform originalTransform;
 	
+	private Composite originalComposite;
+	
 	private Map<String, AffineTransform> savedTransforms = new HashMap<String, AffineTransform>();
+	
+	private double alpha = 1.0d;
 	
 	public BetterPainter(Graphics2D graphics)
 	{
 		this.graphics = graphics;
 		this.originalTransform = graphics.getTransform();
+		this.originalComposite = graphics.getComposite();
 	}
 	
 	public Color getColor()
@@ -36,6 +43,21 @@ public class BetterPainter
 	public void setColor(Color color)
 	{
 		graphics.setColor(color);
+	}
+	
+	public void setAlpha(double alpha)
+	{
+		graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) alpha));
+	}
+	
+	public void clearAlpha()
+	{
+		graphics.setComposite(originalComposite);
+	}
+	
+	public double getAlpha()
+	{
+		return alpha;
 	}
 	
 	public void drawCircle(double x, double y, double radius)

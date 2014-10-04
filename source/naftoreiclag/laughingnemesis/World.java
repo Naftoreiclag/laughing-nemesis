@@ -11,7 +11,7 @@ public class World
 {
 	public List<Person> people = new ArrayList<Person>();
 	
-	public ConversationSpace convsp = new ConversationSpace();
+	public ConversationSpace convsp = new ConversationSpace(this);
 	public Space space = new Space();
 	
 	// Artifical constraint

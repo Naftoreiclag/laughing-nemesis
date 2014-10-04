@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.sun.jmx.snmp.tasks.Task;
+
 import naftoreiclag.laughingnemesis.communication.Bubble;
 import naftoreiclag.laughingnemesis.memory.Memory;
 import naftoreiclag.laughingnemesis.memory.MemoryCollection;
@@ -32,9 +34,9 @@ public class Person
 	// favorite color
 	public Colour favColor;
 	
-	private MemoryCollection memories = new MemoryCollection();
+	public List<Foo> recentSayings = new LinkedList<Foo>();
 	
-	private List<Action> actionQueue = new ArrayList<Action>();
+	private MemoryCollection memories = new MemoryCollection();
 	
 	public Person(World world)
 	{
@@ -46,8 +48,14 @@ public class Person
 		favColor = Colour.getRandomColor();
 		
 		face = new Face();
-		
+
+		this.saySomething("yo");
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
+	}
+	
+	private void saySomething(String something)
+	{
+		recentSayings.add(new Foo(5, something));
 	}
 	
 	public Person findNearestPerson()
@@ -74,35 +82,27 @@ public class Person
 		return nearest;
 	}
 	
+	// Different things which the person is doing
+	private List<Task> tasks = new ArrayList<Task>();
 	
 	public void tick(double delta)
 	{
+		for(Foo foo : recentSayings)
+		{
+			foo.age -= delta;
+		}
+		
+		if(GR.chanceOverTime(delta, 0.5))
+		{
+			this.saySomething("yo");
+		}
+		
 		memories.tick(delta);
 		
-		if(bubbles.isEmpty())
+		if(!bubbles.isEmpty())
 		{
-			
+			Bubble bubble = bubbles.remove();
 		}
-		
-		/*
-		switch(memories.emotion)
-		{
-			case lonely:
-			{
-				// make friends
-				Person newFriend = findNearestPerson();
-				
-				if(newFriend == null)
-				{
-					break;
-				}
-				
-				
-				break;
-			}
-		}
-		
-		*/
 		
 		if(walking)
 		{

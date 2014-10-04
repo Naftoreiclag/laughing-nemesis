@@ -71,8 +71,19 @@ public class Application
 			
 			painter.drawStringCentered(person.name, 0, -30);
 
+			painter.translate(0, (person.recentSayings.size() * -15) - 50);
+			
+			for(Foo foo : person.recentSayings)
+			{
+				painter.setAlpha(foo.thingy());
+				painter.drawStringCentered(foo.string, 0, 0);
+				painter.translate(0, 15);
+			}
+			painter.clearAlpha();
+
 			painter.loadTransform(beforePeople);
 		}
+		
 		painter.deleteTransform(beforePeople);
 		
 		if(analyze != null)
