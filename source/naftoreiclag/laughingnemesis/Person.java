@@ -12,6 +12,7 @@ import naftoreiclag.laughingnemesis.memory.Memory;
 import naftoreiclag.laughingnemesis.memory.MemoryCollection;
 import naftoreiclag.pigcollision.Circle;
 
+// Goal is to make as many friends as possible.
 public class Person
 {
 	public Face face;
@@ -31,6 +32,8 @@ public class Person
 	
 	public World world;
 	
+	public double happy;
+	
 	// favorite color
 	public Colour favColor;
 	
@@ -49,7 +52,6 @@ public class Person
 		
 		face = new Face();
 
-		this.saySomething("yo");
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
 	}
 	
@@ -84,6 +86,7 @@ public class Person
 	
 	// Different things which the person is doing
 	private List<Task> tasks = new ArrayList<Task>();
+	
 	
 	public void tick(double delta)
 	{

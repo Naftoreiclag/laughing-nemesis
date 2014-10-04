@@ -99,6 +99,8 @@ public class Application
 			painter.println(analyze.getEmotion());
 			painter.print("Thinking: ");
 			painter.println(analyze.getThought());
+			painter.print("Happiness: ");
+			painter.println(getDoubleAsPercent(analyze.happy));
 			
 			
 			painter.endPrinting();
@@ -106,6 +108,11 @@ public class Application
 			painter.loadTransformAndDelete(beforeAnalyzer);
 		}
 		
+	}
+	
+	private String getDoubleAsPercent(double d)
+	{
+		return "%" + Math.round(d * 100);
 	}
 
 	
