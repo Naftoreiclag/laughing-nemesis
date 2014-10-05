@@ -20,7 +20,6 @@ public class Person implements ITickable
 	
 	public Stamina brainStamina = new Stamina();
 	
-	// favorite color
 	public Colour favColor;
 	
 	public List<Foo> recentSayings = new LinkedList<Foo>();
@@ -43,9 +42,10 @@ public class Person implements ITickable
 		recentSayings.add(new Foo(5, something));
 	}
 
-	
+	@Override
 	public void tick(double delta)
 	{
+		// Tick all sub-tickables
 		memories.tick(delta);
 		body.tick(delta);
 		brainStamina.tick(delta);

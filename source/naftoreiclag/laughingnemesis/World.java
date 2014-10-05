@@ -32,7 +32,7 @@ public class World
 	{
 		Person person = new Person(this);
 		people.add(person);
-		space.circles.add(person.circle);
+		space.circles.add(person.body.circle);
 	}
 	
 	public boolean tick(double delta)

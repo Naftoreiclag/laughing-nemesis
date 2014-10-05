@@ -33,7 +33,7 @@ public class Application
 	{
 		for(Person person : world.people)
 		{
-			if(person.circle.loc.distanceSquared(
+			if(person.body.circle.loc.distanceSquared(
 					realMx, 
 					realMy) <= 400)
 			{
@@ -61,13 +61,15 @@ public class Application
 		painter.saveTransform(beforePeople);
 		for(Person person : world.people)
 		{
-			painter.translate(person.circle.loc.a, person.circle.loc.b);
+			Body body = person.body;
+			
+			painter.translate(body.circle.loc.a, body.circle.loc.b);
 			
 			painter.drawCircle(0, 0, 20);
-			painter.drawLine(Math.cos(person.lookAngle - Person.fov) * 25, Math.sin(person.lookAngle - Person.fov) * 25, 
-					Math.cos(person.lookAngle - Person.fov) * 20, Math.sin(person.lookAngle - Person.fov) * 20);
-			painter.drawLine(Math.cos(person.lookAngle + Person.fov) * 25, Math.sin(person.lookAngle + Person.fov) * 25, 
-					Math.cos(person.lookAngle + Person.fov) * 20, Math.sin(person.lookAngle + Person.fov) * 20);
+			painter.drawLine(Math.cos(body.lookAngle - Body.fov) * 25, Math.sin(body.lookAngle - Body.fov) * 25, 
+					Math.cos(body.lookAngle - Body.fov) * 20, Math.sin(body.lookAngle - Body.fov) * 20);
+			painter.drawLine(Math.cos(body.lookAngle + Body.fov) * 25, Math.sin(body.lookAngle + Body.fov) * 25, 
+					Math.cos(body.lookAngle + Body.fov) * 20, Math.sin(body.lookAngle + Body.fov) * 20);
 			
 			painter.drawStringCentered(person.name, 0, -30);
 
@@ -96,11 +98,11 @@ public class Application
 			painter.print("Name: ");
 			painter.println(analyze.name);
 			painter.print("Emotion: ");
-			painter.println(analyze.getEmotion());
+			//painter.println(analyze.getEmotion());
 			painter.print("Thinking: ");
 			painter.println(analyze.getThought());
 			painter.print("Happiness: ");
-			painter.println(getDoubleAsPercent(analyze.happy));
+			//painter.println(getDoubleAsPercent(analyze.happy));
 			
 			
 			painter.endPrinting();
