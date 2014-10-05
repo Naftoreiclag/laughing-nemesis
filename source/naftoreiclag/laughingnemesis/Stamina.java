@@ -8,7 +8,7 @@ package naftoreiclag.laughingnemesis;
 
 // 1 stamina = 1 second of standing up from lying down
 // 1 fatigue = +1 max stamina after rest
-public class Stamina
+public class Stamina implements ITickable
 {
 	// Rate in stamina per second
 	private final float recoverSpeed = 0.1f;
@@ -34,7 +34,7 @@ public class Stamina
 		if(bonusRecoveryRate < 0f) bonusRecoveryRate = 0f;
 	}
 	
-	// Tick
+	@Override
 	public void tick(double delta)
 	{
 		// Recover stamina with regards to max amount
