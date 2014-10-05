@@ -15,8 +15,6 @@ import naftoreiclag.pigcollision.Circle;
 // Goal is to make as many friends as possible.
 public class Person
 {
-	public Face face;
-	
 	public Gender gender;
 	public String name;
 	
@@ -31,6 +29,8 @@ public class Person
 	public boolean walking;
 	
 	public World world;
+	
+	public Body body;
 	
 	public double happy;
 	
@@ -49,8 +49,6 @@ public class Person
 		name = Names.getRandomName(gender);
 		
 		favColor = Colour.getRandomColor();
-		
-		face = new Face();
 
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
 	}
@@ -90,6 +88,7 @@ public class Person
 	
 	public void tick(double delta)
 	{
+		memories.tick(delta);
 		for(Foo foo : recentSayings)
 		{
 			foo.age -= delta;
@@ -100,7 +99,6 @@ public class Person
 			this.saySomething("yo");
 		}
 		
-		memories.tick(delta);
 		
 		if(!bubbles.isEmpty())
 		{
@@ -119,11 +117,6 @@ public class Person
 	public void receiveMessage(Bubble bubble)
 	{
 		bubbles.add(bubble);
-	}
-
-	public Emotion getEmotion()
-	{
-		return memories.emotion;
 	}
 
 	public String getThought()
