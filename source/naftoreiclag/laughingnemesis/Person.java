@@ -15,7 +15,13 @@ public class Person implements ITickable
 	
 	public Stamina brainStamina = new Stamina();
 	
+	public LifeAnalyzer analyzer = new LifeAnalyzer();
+	
+	public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
+	
 	public MemoryCollection memories = new MemoryCollection();
+	public List<Thought> thoughts = new LinkedList<Thought>();
+	public List<Goal> goals = new LinkedList<Goal>();
 	public List<Task> queuedTasks = new LinkedList<Task>();
 	public Task currentTask;
 	
@@ -33,14 +39,15 @@ public class Person implements ITickable
 		memories.tick(delta);
 		body.tick(delta);
 		brainStamina.tick(delta);
+		
+		
 	}
-
 	
 	
 	
 	
 	
-
+	
 	
 	private void saySomething(String something)
 	{
