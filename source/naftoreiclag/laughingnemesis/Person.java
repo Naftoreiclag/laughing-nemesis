@@ -15,7 +15,7 @@ public class Person implements ITickable
 	
 	public Stamina brainStamina = new Stamina();
 	
-	public LifeAnalyzer analyzer = new LifeAnalyzer(this);
+	public Subconscious analyzer = new Subconscious(this);
 	
 	public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
 	
@@ -24,6 +24,8 @@ public class Person implements ITickable
 	public List<Goal> goals = new LinkedList<Goal>();
 	public List<Task> queuedTasks = new LinkedList<Task>();
 	public Task currentTask;
+	
+	public double subconciousHertz = 1d / 5d; // every 5 seconds
 	
 	public Person(World world)
 	{
@@ -40,15 +42,17 @@ public class Person implements ITickable
 		body.tick(delta);
 		brainStamina.tick(delta);
 		
-		
+		if(GR.chanceOverTime(delta, subconciousHertz))
+		{
+			scAnalyzeSelf();
+		}
 	}
 	
-	
-	
-	
-	
-	
-	
+	private void scAnalyzeSelf()
+	{
+		
+	}
+
 	private void saySomething(String something)
 	{
 		recentSayings.add(new Foo(5, something));
