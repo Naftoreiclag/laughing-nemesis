@@ -15,7 +15,7 @@ public class Person implements ITickable
 	
 	public Stamina brainStamina = new Stamina();
 	
-	public LifeAnalyzer analyzer = new LifeAnalyzer();
+	public LifeAnalyzer analyzer = new LifeAnalyzer(this);
 	
 	public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
 	
