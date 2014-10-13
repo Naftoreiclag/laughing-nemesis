@@ -1,13 +1,10 @@
 package naftoreiclag.laughingnemesis;
 
-// Brainstamina can be spent to try recover a lost memory
-// When trying to remember it, the decaybuffer goes up linearly, 
-// and the freshness increases to approach 1 at a rate deterimed by inverse decayRate.
-// Decaybuffer will be drained by decayRate
-// Whatever, implement forgetting later
 public class Memory
 {
-	protected float freshness;
-	protected float decayBuffer;
+	// With this key present, the memory can be read instantly
+	protected int secretAccessKey;
+	
 	protected float decayRate;
+	protected float recallRate;
 }

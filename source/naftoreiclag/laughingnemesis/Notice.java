@@ -5,7 +5,13 @@
  */
 package naftoreiclag.laughingnemesis;
 
-public class Notice
+public abstract class Notice
 {
-
+	// Returns the parent which called.
+	private IExaminer parent;
+	public IExaminer getParent() { return parent; }
+	
+	// Is equal to; used to see if the examiner also returns this when examining all memories.
+	public abstract boolean equals(Notice other);
+	public abstract boolean sameType(Notice other);
 }

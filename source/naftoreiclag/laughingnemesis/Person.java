@@ -54,31 +54,27 @@ public class Person implements ITickable
 		recentSayings.add(new Foo(5, something));
 	}
 	
-	/*
-	 * Purpose is to analyze memories and other stuff to create notices.
-	 * Perhaps I should merge this with Person?
-	 * 
-	 * Every tick, a random sample of memories is presented to this class. // This includes short-term, which may have interesting consequences.
-	 * Potentially, a question will be developed from this presentation.
-	 * This will be added to a queue of questions. // There may be memories which surpress further analysis
-	 * 
-	 * The questions which are developed occur sub-conciously, meaning there is no intervention of conciousness/identity
-	 * Rather, how the questions are answered is based from identity
-	 */
 	public class Subconscious implements ITickable
 	{
+		double hertz = 1 / 5;
+		
 		@Override
 		public void tick(double delta)
 		{
-			memories.tick(delta);
+			if(GR.chanceOverTime(delta, hertz))
+			{
+				Memory[] sample = memories.getRandomMemories();
+			}
 		}
 	}
 	
+	/*
+	 * Not sure, but it is the key element which distinguishes persons from each other.
+	 * 
+	 */
 	public class Identity
 	{
-
 		public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
-
 	}
 	
 	
