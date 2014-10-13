@@ -10,7 +10,7 @@ import java.util.List;
 import naftoreiclag.laughingnemesis.memory.AMemory;
 import naftoreiclag.laughingnemesis.memory.MemoryFriendship;
 
-public class NoticeNumberOfFriends extends ANotice implements IExaminer
+public class NoticeNumberOfFriends extends ANotice
 {
 	private final int numberOfFriends;
 	
@@ -34,19 +34,22 @@ public class NoticeNumberOfFriends extends ANotice implements IExaminer
 		return udder.numberOfFriends == this.numberOfFriends;
 	}
 	
-	@Override
-	public ANotice examine(List<AMemory> memories)
+	protected static class Examiner implements IExaminer
 	{
-		int num = 0;
-		
-		for(AMemory memory : memories)
+		@Override
+		public ANotice examine(List<AMemory> memories)
 		{
-			if(memory instanceof MemoryFriendship)
+			int num = 0;
+			
+			for(AMemory memory : memories)
 			{
-				++ num;
+				if(memory instanceof MemoryFriendship)
+				{
+					++ num;
+				}
 			}
+			
+			return new NoticeNumberOfFriends(this, num);
 		}
-		
-		return new NoticeNumberOfFriends(this, num);
 	}
 }

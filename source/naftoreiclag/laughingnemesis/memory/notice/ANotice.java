@@ -14,6 +14,9 @@ public abstract class ANotice
 		this.parent = parent;
 	}
 	
+	//
+	private boolean surpressed;
+	
 	// Returns the parent which called.
 	private IExaminer parent;
 	public IExaminer getParent() { return parent; }

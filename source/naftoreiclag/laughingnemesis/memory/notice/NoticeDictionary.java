@@ -14,6 +14,10 @@ import naftoreiclag.laughingnemesis.memory.AMemory;
 public class NoticeDictionary
 {
 	public static final List<IExaminer> examiners = new ArrayList<IExaminer>();
+	static
+	{
+		addExaminer(new NoticeNumberOfFriends.Examiner());
+	}
 	
 	public static List<ANotice> examine(List<AMemory> sample)
 	{
@@ -30,5 +34,10 @@ public class NoticeDictionary
 		}
 		
 		return notices;
+	}
+	
+	public static void addExaminer(IExaminer examiner)
+	{
+		examiners.add(examiner);
 	}
 }

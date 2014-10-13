@@ -13,6 +13,7 @@ import naftoreiclag.laughingnemesis.communication.Bubble;
 import naftoreiclag.laughingnemesis.memory.AMemory;
 import naftoreiclag.laughingnemesis.memory.MemoryCollection;
 import naftoreiclag.laughingnemesis.memory.notice.ANotice;
+import naftoreiclag.laughingnemesis.memory.notice.NoticeCollection;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeDictionary;
 
 // Goal is to make as many friends as possible.
@@ -25,6 +26,7 @@ public class Person implements ITickable
 	public Body body;
 	
 	public MemoryCollection memories = new MemoryCollection();
+	public NoticeCollection notices = new NoticeCollection();
 	
 	// Brainily
 	public Subconscious subcon = new Subconscious();
@@ -68,8 +70,9 @@ public class Person implements ITickable
 			if(GR.chanceOverTime(delta, hertz))
 			{
 				List<AMemory> sample = memories.getRandomMemories();
-				List<ANotice> notices = NoticeDictionary.examine(sample);
+				List<ANotice> noticez = NoticeDictionary.examine(sample);
 				
+				notices.add(noticez);
 			}
 		}
 	}
