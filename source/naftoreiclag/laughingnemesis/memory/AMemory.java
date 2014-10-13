@@ -7,6 +7,4 @@ public abstract class AMemory
 	
 	protected float decayRate;
 	protected float recallRate;
-	
-	public abstract boolean sameType(AMemory other);
 }

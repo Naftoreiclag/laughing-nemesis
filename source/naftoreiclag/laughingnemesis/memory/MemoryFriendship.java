@@ -8,9 +8,4 @@ package naftoreiclag.laughingnemesis.memory;
 
 public class MemoryFriendship extends AMemory
 {
-	@Override
-	public boolean sameType(AMemory other)
-	{
-		return other instanceof MemoryFriendship;
-	}
 }

@@ -1,6 +1,7 @@
 package naftoreiclag.laughingnemesis.memory;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import naftoreiclag.laughingnemesis.GR;
@@ -28,12 +29,12 @@ public class MemoryCollection implements ITickable
 
 	}
 
-	public AMemory[] getRandomMemories()
+	public List<AMemory> getRandomMemories()
 	{
-		AMemory[] ret = new AMemory[memories.size()];
+		List<AMemory> ret = new LinkedList<AMemory>();
 		for(int i = 0; i < memories.size(); ++ i)
 		{
-			ret[i] = memories.get(i);
+			ret.add(memories.get(i));
 		}
 		return ret;
 	}

@@ -20,5 +20,5 @@ public abstract class ANotice
 	
 	// Is equal to; used to see if the examiner also returns this when examining all memories.
 	public abstract boolean equals(ANotice other);
-	public abstract boolean sameType(ANotice other);
+	//public abstract boolean sameType(ANotice other);
 }

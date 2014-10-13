@@ -13,9 +13,9 @@ import naftoreiclag.laughingnemesis.memory.AMemory;
 
 public class NoticeDictionary
 {
-	public List<IExaminer> examiners = new ArrayList<IExaminer>();
+	public static final List<IExaminer> examiners = new ArrayList<IExaminer>();
 	
-	public List<ANotice> getQuestions(List<AMemory> sample)
+	public static List<ANotice> examine(List<AMemory> sample)
 	{
 		List<ANotice> notices = new LinkedList<ANotice>();
 		
