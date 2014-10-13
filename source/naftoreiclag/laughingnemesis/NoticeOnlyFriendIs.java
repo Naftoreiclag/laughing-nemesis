@@ -9,6 +9,8 @@ import java.util.List;
 
 public class NoticeOnlyFriendIs extends Notice implements IExaminer
 {
+	private NoticeOnlyFriendIs(IExaminer parent) { super(parent); }
+	
 	@Override
 	public boolean equals(Notice other)
 	{

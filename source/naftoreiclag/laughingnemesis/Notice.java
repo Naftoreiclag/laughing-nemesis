@@ -7,6 +7,12 @@ package naftoreiclag.laughingnemesis;
 
 public abstract class Notice
 {
+	//
+	public Notice(IExaminer parent)
+	{
+		this.parent = parent;
+	}
+	
 	// Returns the parent which called.
 	private IExaminer parent;
 	public IExaminer getParent() { return parent; }
