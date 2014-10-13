@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Queue;
 
 import naftoreiclag.laughingnemesis.communication.Bubble;
+import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.memory.MemoryCollection;
 
 // Goal is to make as many friends as possible.
 // Perhaps this class should just be a combination of a body and brain...
@@ -63,7 +65,7 @@ public class Person implements ITickable
 		{
 			if(GR.chanceOverTime(delta, hertz))
 			{
-				Memory[] sample = memories.getRandomMemories();
+				AMemory[] sample = memories.getRandomMemories();
 			}
 		}
 	}

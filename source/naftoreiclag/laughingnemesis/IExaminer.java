@@ -7,7 +7,10 @@ package naftoreiclag.laughingnemesis;
 
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.memory.notice.ANotice;
+
 public interface IExaminer
 {
-	public abstract Notice examine(List<Memory> memories);
+	public abstract ANotice examine(List<AMemory> memories);
 }
