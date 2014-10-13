@@ -16,9 +16,6 @@ public abstract class ANotice
 	
 	public abstract String getInfo();
 	
-	//
-	private boolean surpressed;
-	
 	// Returns the parent which called.
 	private IExaminer parent;
 	public IExaminer getParent() { return parent; }

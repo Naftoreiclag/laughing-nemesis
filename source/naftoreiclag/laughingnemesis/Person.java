@@ -53,9 +53,18 @@ public class Person implements ITickable
 		
 		brainStamina.tick(delta);
 		subcon.tick(delta);
+		
+		for(Foo f : recentSayings)
+		{
+			f.age -= delta;
+			
+			if(f.age < 0)
+			{
+			}
+		}
 	}
 
-	private void saySomething(String something)
+	private void debug(String something)
 	{
 		recentSayings.add(new Foo(5, something));
 	}
@@ -67,9 +76,9 @@ public class Person implements ITickable
 		@Override
 		public void tick(double delta)
 		{
-			if(GR.chanceOverTime(delta, hertz))
+			if(GR.chanceHertz(delta, hertz))
 			{
-				System.out.println("a");
+				debug("thunk");
 				List<AMemory> sample = memories.getRandomMemories();
 				List<ANotice> noticez = NoticeDictionary.examine(sample);
 				
@@ -78,10 +87,6 @@ public class Person implements ITickable
 		}
 	}
 	
-	/*
-	 * Not sure, but it is the key element which distinguishes persons from each other.
-	 * 
-	 */
 	public class Identity
 	{
 		public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
@@ -94,10 +99,5 @@ public class Person implements ITickable
 	public void receiveMessage(Bubble bubble)
 	{
 		bubbles.add(bubble);
-	}
-
-	public String getThought()
-	{
-		return "I want some friends";
 	}
 }

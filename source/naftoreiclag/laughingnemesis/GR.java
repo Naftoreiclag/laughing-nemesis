@@ -15,17 +15,11 @@ public class GR
 	 * 
 	 * Probability is like hertz.
 	 * 
+	 * Note: this function becomes inaccurate if 1/hertz < 1, since on average it would have happened multiple times per second.
+	 * 
 	 */
-	public static boolean chanceOverTime(double delta, double probabilityHertz)
+	public static boolean chanceHertz(double delta, double probabilityHertz)
 	{
 		return r.nextDouble() > Math.pow(1 - probabilityHertz, delta);
 	}
-	
-	/*
-	// Same, but returns how many true's would have been returned
-	public static int chanceOverTime(double delta, double probability)
-	{
-		
-	}
-	*/
 }
