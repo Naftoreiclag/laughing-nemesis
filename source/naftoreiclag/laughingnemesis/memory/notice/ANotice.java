@@ -5,7 +5,6 @@
  */
 package naftoreiclag.laughingnemesis.memory.notice;
 
-import naftoreiclag.laughingnemesis.IExaminer;
 
 public abstract class ANotice
 {

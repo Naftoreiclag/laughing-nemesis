@@ -7,7 +7,6 @@ package naftoreiclag.laughingnemesis.memory.notice;
 
 import java.util.List;
 
-import naftoreiclag.laughingnemesis.IExaminer;
 import naftoreiclag.laughingnemesis.memory.AMemory;
 
 public class NoticeOnlyFriendIs extends ANotice implements IExaminer

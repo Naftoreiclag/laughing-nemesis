@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import naftoreiclag.laughingnemesis.IExaminer;
 import naftoreiclag.laughingnemesis.memory.AMemory;
 
 public class NoticeDictionary
