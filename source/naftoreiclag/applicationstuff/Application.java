@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import naftoreiclag.laughingnemesis.*;
+import naftoreiclag.laughingnemesis.memory.notice.ANotice;
 
 public class Application
 {
@@ -97,13 +98,11 @@ public class Application
 			
 			painter.print("Name: ");
 			painter.println(analyze.name);
-			painter.print("Emotion: ");
-			//painter.println(analyze.getEmotion());
-			painter.print("Thinking: ");
-			painter.println(analyze.getThought());
-			painter.print("Happiness: ");
-			//painter.println(getDoubleAsPercent(analyze.happy));
-			
+			painter.println("Notices: ");
+			for(ANotice notice : analyze.notices.notices)
+			{
+				painter.println(notice.getInfo());
+			}
 			
 			painter.endPrinting();
 			

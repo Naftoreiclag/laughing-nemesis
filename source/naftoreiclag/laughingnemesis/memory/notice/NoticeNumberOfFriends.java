@@ -20,6 +20,12 @@ public class NoticeNumberOfFriends extends ANotice
 		
 		this.numberOfFriends = numberOfFriends;
 	}
+
+	@Override
+	public String getInfo()
+	{
+		return "I have " + numberOfFriends + " friends";
+	}
 	
 	@Override
 	public boolean equals(ANotice other)

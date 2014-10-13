@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NoticeCollection
 {
-	List<ANotice> notices = new LinkedList<ANotice>();
+	public List<ANotice> notices = new LinkedList<ANotice>();
 
 	public void add(List<ANotice> noticesToAdd)
 	{

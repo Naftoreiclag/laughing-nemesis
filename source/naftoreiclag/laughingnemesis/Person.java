@@ -62,13 +62,14 @@ public class Person implements ITickable
 	
 	public class Subconscious implements ITickable
 	{
-		double hertz = 1 / 5;
+		double hertz = 1d / 5d;
 		
 		@Override
 		public void tick(double delta)
 		{
 			if(GR.chanceOverTime(delta, hertz))
 			{
+				System.out.println("a");
 				List<AMemory> sample = memories.getRandomMemories();
 				List<ANotice> noticez = NoticeDictionary.examine(sample);
 				

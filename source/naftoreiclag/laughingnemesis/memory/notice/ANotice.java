@@ -14,6 +14,8 @@ public abstract class ANotice
 		this.parent = parent;
 	}
 	
+	public abstract String getInfo();
+	
 	//
 	private boolean surpressed;
 	
