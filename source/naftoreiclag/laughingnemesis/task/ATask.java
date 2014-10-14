@@ -7,5 +7,5 @@ package naftoreiclag.laughingnemesis.task;
 
 public class ATask
 {
-
+	
 }
