@@ -7,7 +7,9 @@ package naftoreiclag.laughingnemesis.memory.notice;
 
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.Person.Identity;
 import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.want.AWant;
 
 
 public abstract class ANotice
@@ -19,16 +21,14 @@ public abstract class ANotice
 		this.hertz = 1d / difficulty;
 	}
 	
-	public abstract String getInfo();
-	
 	public final double hertz;
 	
-	public abstract void applyGoals();
+	public abstract List<AWant> whatDoYouWantFromThis(Identity identity);
 	
 	// why do i have this
-	protected boolean verified = false;
-	public void verify() { verified = true; }
-	public boolean isVerified() { return verified; }
+	protected boolean solved = false;
+	public void markSolved() { solved = true; }
+	public boolean isSolved() { return solved; }
 	
 	// The method which will later be reused to determine if this notice also applies to a different list of memories.
 	private IExaminer examiner;

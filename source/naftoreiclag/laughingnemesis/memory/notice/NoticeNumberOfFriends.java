@@ -5,10 +5,14 @@
  */
 package naftoreiclag.laughingnemesis.memory.notice;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.Person.Identity;
 import naftoreiclag.laughingnemesis.memory.AMemory;
 import naftoreiclag.laughingnemesis.memory.MemoryFriendship;
+import naftoreiclag.laughingnemesis.want.AWant;
+import naftoreiclag.laughingnemesis.want.WantMakeFriend;
 
 public class NoticeNumberOfFriends extends ANotice
 {
@@ -24,9 +28,9 @@ public class NoticeNumberOfFriends extends ANotice
 	}
 
 	@Override
-	public String getInfo()
+	public String toString()
 	{
-		return (verified ? "Verified: " : "Maybe, ") + "I have " + numberOfFriends + " friends";
+		return (solved ? "Verified: " : "Maybe, ") + "I have " + numberOfFriends + " friends";
 	}
 	
 	@Override
@@ -62,9 +66,15 @@ public class NoticeNumberOfFriends extends ANotice
 	}
 
 	@Override
-	public void applyGoals()
+	public List<AWant> whatDoYouWantFromThis(Identity identity)
 	{
-		// TODO Auto-generated method stub
+		List<AWant> ret = new LinkedList<AWant>();
 		
+		if(numberOfFriends == 0)
+		{
+			ret.add(new WantMakeFriend());
+		}
+		
+		return ret;
 	}
 }

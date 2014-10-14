@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 import naftoreiclag.laughingnemesis.*;
 import naftoreiclag.laughingnemesis.memory.notice.ANotice;
+import naftoreiclag.laughingnemesis.want.AWant;
 
 public class Application
 {
@@ -101,7 +102,12 @@ public class Application
 			painter.println("Notices: ");
 			for(ANotice notice : analyze.notices.data)
 			{
-				painter.println(notice.getInfo());
+				painter.println(notice.toString());
+			}
+			painter.println("Wants: ");
+			for(AWant want : analyze.wants.data)
+			{
+				painter.println(want.toString());
 			}
 			
 			painter.endPrinting();

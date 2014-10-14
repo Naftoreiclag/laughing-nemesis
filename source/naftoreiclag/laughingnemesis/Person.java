@@ -6,6 +6,7 @@
 package naftoreiclag.laughingnemesis;
 
 import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -16,6 +17,9 @@ import naftoreiclag.laughingnemesis.memory.MemoryCollection;
 import naftoreiclag.laughingnemesis.memory.notice.ANotice;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeCollection;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeDictionary;
+import naftoreiclag.laughingnemesis.task.ATask;
+import naftoreiclag.laughingnemesis.task.TaskCollection;
+import naftoreiclag.laughingnemesis.want.WantCollection;
 
 // Goal is to make as many friends as possible.
 // Perhaps this class should just be a combination of a body and brain...
@@ -28,6 +32,8 @@ public class Person implements ITickable
 	
 	public MemoryCollection memories = new MemoryCollection();
 	public NoticeCollection notices = new NoticeCollection();
+	public WantCollection wants = new WantCollection();
+	public TaskCollection tasks = new TaskCollection();
 	
 	public Queue<ANotice> notices2 = new LinkedList<ANotice>();
 	
@@ -35,8 +41,8 @@ public class Person implements ITickable
 	public Subconscious subcon = new Subconscious();
 	public Identity identity = new Identity();
 	public Stamina brainStamina = new Stamina();
-	public List<Task> queuedTasks = new LinkedList<Task>();
-	public Task currentTask;
+	public List<ATask> queuedTasks = new LinkedList<ATask>();
+	public ATask currentTask;
 	
 	public Person(World world)
 	{
@@ -57,7 +63,7 @@ public class Person implements ITickable
 		
 		for(ANotice notice : notices.data)
 		{
-			if(notice.isVerified())
+			if(notice.isSolved())
 			{
 				continue;
 			}
@@ -68,15 +74,19 @@ public class Person implements ITickable
 			{
 				if(notice.isTrueFor(memories.data))
 				{
-					notice.verify();
+					notice.markSolved();
 					notices2.add(notice);
 				}
+				
+				// todo: if it is wrong, add whatever we still noticed to the notice stack
 			}
 		}
 		
-		for(ANotice notice : notices2)
+		for(Iterator<ANotice> iterator = notices2.iterator(); iterator.hasNext();)
 		{
-			notice.applyGoals();
+		    ANotice notice = iterator.next();
+			wants.add(notice.whatDoYouWantFromThis(identity));
+			iterator.remove();
 		}
 		
 		debugMessagesTick(delta);
