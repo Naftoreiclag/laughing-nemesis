@@ -9,16 +9,23 @@ package naftoreiclag.laughingnemesis.memory.notice;
 public abstract class ANotice
 {
 	//
-	public ANotice(IExaminer parent)
+	public ANotice(IExaminer parent, int difficulty)
 	{
 		this.parent = parent;
+		this.hertz = 1d / difficulty;
 	}
 	
 	public abstract String getInfo();
 	
+	public final double hertz;
+	
+	protected boolean verified = false;
+	public void verify() { verified = true; }
+	public boolean isVerified() { return verified; }
+	
 	// Returns the parent which called.
 	private IExaminer parent;
-	public IExaminer getParent() { return parent; }
+	public IExaminer getExaminer() { return parent; }
 	
 	// Is equal to; used to see if the examiner also returns this when examining all memories.
 	public abstract boolean equals(ANotice other);

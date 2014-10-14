@@ -54,7 +54,25 @@ public class Person implements ITickable
 		brainStamina.tick(delta);
 		subcon.tick(delta);
 		
-		for(Foo f : recentSayings)
+		for(ANotice notice : notices.data)
+		{
+			// TODO: use brainstamina
+			
+			if(GR.chanceHertz(delta, notice.hertz))
+			{
+				if(notice.getExaminer().examine(memories.data).equals(notice))
+				{
+					notice.verify();
+				}
+			}
+		}
+		
+		debugMessagesTick(delta);
+	}
+
+	private void debugMessagesTick(double delta)
+	{
+		for(Foo f : debugMessages)
 		{
 			f.age -= delta;
 			
@@ -66,7 +84,7 @@ public class Person implements ITickable
 
 	private void debug(String something)
 	{
-		recentSayings.add(new Foo(5, something));
+		debugMessages.add(new Foo(5, something));
 	}
 	
 	public class Subconscious implements ITickable
@@ -93,7 +111,7 @@ public class Person implements ITickable
 	}
 	
 	
-	public List<Foo> recentSayings = new LinkedList<Foo>();
+	public List<Foo> debugMessages = new LinkedList<Foo>();
 	public Queue<Bubble> bubbles = new LinkedList<Bubble>();
 	
 	public void receiveMessage(Bubble bubble)

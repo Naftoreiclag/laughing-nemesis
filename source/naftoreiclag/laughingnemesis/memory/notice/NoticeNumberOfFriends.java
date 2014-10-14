@@ -12,11 +12,13 @@ import naftoreiclag.laughingnemesis.memory.MemoryFriendship;
 
 public class NoticeNumberOfFriends extends ANotice
 {
+	public static final int difficulty = 10;
+	
 	private final int numberOfFriends;
 	
 	private NoticeNumberOfFriends(IExaminer parent, int numberOfFriends)
 	{
-		super(parent);
+		super(parent, difficulty);
 		
 		this.numberOfFriends = numberOfFriends;
 	}
@@ -24,7 +26,7 @@ public class NoticeNumberOfFriends extends ANotice
 	@Override
 	public String getInfo()
 	{
-		return "I have " + numberOfFriends + " friends";
+		return (verified ? "Verified: " : "Maybe, ") + "I have " + numberOfFriends + " friends";
 	}
 	
 	@Override

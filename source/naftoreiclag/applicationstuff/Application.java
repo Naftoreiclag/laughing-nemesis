@@ -74,9 +74,9 @@ public class Application
 			
 			painter.drawStringCentered(person.name, 0, -30);
 
-			painter.translate(0, (person.recentSayings.size() * -15) - 50);
+			painter.translate(0, (person.debugMessages.size() * -15) - 50);
 			
-			for(Foo foo : person.recentSayings)
+			for(Foo foo : person.debugMessages)
 			{
 				painter.setAlpha(foo.thingy());
 				painter.drawStringCentered(foo.string, 0, 0);
@@ -99,7 +99,7 @@ public class Application
 			painter.print("Name: ");
 			painter.println(analyze.name);
 			painter.println("Notices: ");
-			for(ANotice notice : analyze.notices.notices)
+			for(ANotice notice : analyze.notices.data)
 			{
 				painter.println(notice.getInfo());
 			}

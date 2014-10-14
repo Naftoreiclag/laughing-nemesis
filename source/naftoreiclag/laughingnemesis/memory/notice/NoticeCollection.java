@@ -10,14 +10,14 @@ import java.util.List;
 
 public class NoticeCollection
 {
-	public List<ANotice> notices = new LinkedList<ANotice>();
+	public List<ANotice> data = new LinkedList<ANotice>();
 
 	public void add(List<ANotice> noticesToAdd)
 	{
 		for(ANotice newNoticeToAdd : noticesToAdd)
 		{
 			boolean shouldAdd = true;
-			for(ANotice comparison : notices)
+			for(ANotice comparison : data)
 			{
 				if(newNoticeToAdd.equals(comparison))
 				{
@@ -28,7 +28,7 @@ public class NoticeCollection
 			
 			if(shouldAdd)
 			{
-				notices.add(newNoticeToAdd);
+				data.add(newNoticeToAdd);
 			}
 		}
 	}

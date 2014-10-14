@@ -9,7 +9,7 @@ import naftoreiclag.laughingnemesis.ITickable;
 
 public class MemoryCollection implements ITickable
 {
-	private List<AMemory> memories = new ArrayList<AMemory>();
+	public List<AMemory> data = new ArrayList<AMemory>();
 	
 	public AMemory[] getRandomMemories(int number)
 	{
@@ -17,7 +17,7 @@ public class MemoryCollection implements ITickable
 		
 		for(int i = 0; i < number; ++ i)
 		{
-			memories.get(GR.r.nextInt(memories.size()));
+			data.get(GR.r.nextInt(data.size()));
 		}
 		
 		return ret;
@@ -32,9 +32,9 @@ public class MemoryCollection implements ITickable
 	public List<AMemory> getRandomMemories()
 	{
 		List<AMemory> ret = new LinkedList<AMemory>();
-		for(int i = 0; i < memories.size(); ++ i)
+		for(int i = 0; i < data.size(); ++ i)
 		{
-			ret.add(memories.get(i));
+			ret.add(data.get(i));
 		}
 		return ret;
 	}
