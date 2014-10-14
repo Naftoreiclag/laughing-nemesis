@@ -7,6 +7,7 @@ import java.util.List;
 import naftoreiclag.laughingnemesis.GR;
 import naftoreiclag.laughingnemesis.ITickable;
 
+// TODO: merge with Person
 public class MemoryCollection implements ITickable
 {
 	public List<AMemory> data = new ArrayList<AMemory>();

@@ -15,11 +15,6 @@ public enum Trait
 	societal,
 	maverick,
 	gluttonous,
-	shy;
-	
-	// Traits which by definition conflict with one another (e.g. rational and irrational)
-	Trait[] inherentConflicts;
-	
-	// Traits which are near-synonyms (e.g. deceptive and manipulative)
-	Trait[] trends;
+	shy,
+	extroverted;
 }

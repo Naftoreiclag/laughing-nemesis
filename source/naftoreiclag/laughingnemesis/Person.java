@@ -5,6 +5,7 @@
  */
 package naftoreiclag.laughingnemesis;
 
+import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -28,12 +29,12 @@ public class Person implements ITickable
 	public MemoryCollection memories = new MemoryCollection();
 	public NoticeCollection notices = new NoticeCollection();
 	
+	public Queue<ANotice> notices2 = new LinkedList<ANotice>();
+	
 	// Brainily
 	public Subconscious subcon = new Subconscious();
 	public Identity identity = new Identity();
 	public Stamina brainStamina = new Stamina();
-	public List<Thought> thoughts = new LinkedList<Thought>();
-	public List<Goal> goals = new LinkedList<Goal>();
 	public List<Task> queuedTasks = new LinkedList<Task>();
 	public Task currentTask;
 	
@@ -56,15 +57,26 @@ public class Person implements ITickable
 		
 		for(ANotice notice : notices.data)
 		{
+			if(notice.isVerified())
+			{
+				continue;
+			}
+			
 			// TODO: use brainstamina
 			
 			if(GR.chanceHertz(delta, notice.hertz))
 			{
-				if(notice.getExaminer().examine(memories.data).equals(notice))
+				if(notice.isTrueFor(memories.data))
 				{
 					notice.verify();
+					notices2.add(notice);
 				}
 			}
+		}
+		
+		for(ANotice notice : notices2)
+		{
+			notice.applyGoals();
 		}
 		
 		debugMessagesTick(delta);
@@ -107,7 +119,12 @@ public class Person implements ITickable
 	
 	public class Identity
 	{
-		public ThoughtCookbook thoughtCooker = new ThoughtCookbook();
+		public EnumSet<Trait> traits = EnumSet.noneOf(Trait.class);
+		
+		public Identity()
+		{
+			traits.add(Trait.extroverted);
+		}
 	}
 	
 	

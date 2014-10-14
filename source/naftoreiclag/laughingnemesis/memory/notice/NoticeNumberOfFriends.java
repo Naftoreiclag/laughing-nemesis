@@ -60,4 +60,11 @@ public class NoticeNumberOfFriends extends ANotice
 			return new NoticeNumberOfFriends(this, num);
 		}
 	}
+
+	@Override
+	public void applyGoals()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }
