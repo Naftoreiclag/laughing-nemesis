@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Queue;
 
 import naftoreiclag.laughingnemesis.communication.Bubble;
-import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.memory.Memory;
 import naftoreiclag.laughingnemesis.memory.MemoryCollection;
-import naftoreiclag.laughingnemesis.memory.notice.ANotice;
+import naftoreiclag.laughingnemesis.memory.notice.Notice;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeCollection;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeDictionary;
-import naftoreiclag.laughingnemesis.task.ATask;
+import naftoreiclag.laughingnemesis.task.Task;
 import naftoreiclag.laughingnemesis.task.TaskCollection;
 import naftoreiclag.laughingnemesis.want.WantCollection;
 
@@ -35,14 +35,14 @@ public class Person implements ITickable
 	public WantCollection wants = new WantCollection();
 	public TaskCollection tasks = new TaskCollection();
 	
-	public Queue<ANotice> notices2 = new LinkedList<ANotice>();
+	public Queue<Notice> notices2 = new LinkedList<Notice>();
 	
 	// Brainily
 	public Subconscious subcon = new Subconscious();
 	public Identity identity = new Identity();
 	public Stamina brainStamina = new Stamina();
-	public List<ATask> queuedTasks = new LinkedList<ATask>();
-	public ATask currentTask;
+	public List<Task> queuedTasks = new LinkedList<Task>();
+	public Task currentTask;
 	
 	public Person(World world)
 	{
@@ -61,7 +61,7 @@ public class Person implements ITickable
 		brainStamina.tick(delta);
 		subcon.tick(delta);
 		
-		for(ANotice notice : notices.data)
+		for(Notice notice : notices.data)
 		{
 			if(notice.isSolved())
 			{
@@ -82,9 +82,9 @@ public class Person implements ITickable
 			}
 		}
 		
-		for(Iterator<ANotice> iterator = notices2.iterator(); iterator.hasNext();)
+		for(Iterator<Notice> iterator = notices2.iterator(); iterator.hasNext();)
 		{
-		    ANotice notice = iterator.next();
+		    Notice notice = iterator.next();
 			wants.add(notice.whatDoYouWantFromThis(identity));
 			iterator.remove();
 		}
@@ -119,8 +119,8 @@ public class Person implements ITickable
 			if(GR.chanceHertz(delta, hertz))
 			{
 				debug("thunk");
-				List<AMemory> sample = memories.getRandomMemories();
-				List<ANotice> noticez = NoticeDictionary.examine(sample);
+				List<Memory> sample = memories.getRandomMemories();
+				List<Notice> noticez = NoticeDictionary.examine(sample);
 				
 				notices.add(noticez);
 			}

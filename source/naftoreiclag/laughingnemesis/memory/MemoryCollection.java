@@ -10,11 +10,11 @@ import naftoreiclag.laughingnemesis.ITickable;
 // TODO: merge with Person
 public class MemoryCollection implements ITickable
 {
-	public List<AMemory> data = new ArrayList<AMemory>();
+	public List<Memory> data = new ArrayList<Memory>();
 	
-	public AMemory[] getRandomMemories(int number)
+	public Memory[] getRandomMemories(int number)
 	{
-		AMemory[] ret = new AMemory[number];
+		Memory[] ret = new Memory[number];
 		
 		for(int i = 0; i < number; ++ i)
 		{
@@ -30,9 +30,9 @@ public class MemoryCollection implements ITickable
 
 	}
 
-	public List<AMemory> getRandomMemories()
+	public List<Memory> getRandomMemories()
 	{
-		List<AMemory> ret = new LinkedList<AMemory>();
+		List<Memory> ret = new LinkedList<Memory>();
 		for(int i = 0; i < data.size(); ++ i)
 		{
 			ret.add(data.get(i));

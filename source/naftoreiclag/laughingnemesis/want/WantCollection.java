@@ -10,14 +10,14 @@ import java.util.List;
 
 public class WantCollection
 {
-	public List<AWant> data = new LinkedList<AWant>();
+	public List<Want> data = new LinkedList<Want>();
 
-	public void add(List<AWant> wantsToAdd)
+	public void add(List<Want> wantsToAdd)
 	{
-		for(AWant newWantsToAdd : wantsToAdd)
+		for(Want newWantsToAdd : wantsToAdd)
 		{
 			boolean shouldAdd = true;
-			for(AWant comparison : data)
+			for(Want comparison : data)
 			{
 				if(newWantsToAdd.equals(comparison))
 				{

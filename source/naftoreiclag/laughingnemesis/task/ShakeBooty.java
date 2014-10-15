@@ -3,9 +3,10 @@
  * Distributed under the Apache License Version 2.0 (http://www.apache.org/licenses/)
  * See accompanying file LICENSE
  */
-package naftoreiclag.laughingnemesis.memory;
+package naftoreiclag.laughingnemesis.task;
 
-
-public class MemoryFriendship extends Memory
+// this is how you make friends, obviously
+public class ShakeBooty extends Task
 {
+	
 }

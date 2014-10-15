@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import naftoreiclag.laughingnemesis.*;
-import naftoreiclag.laughingnemesis.memory.notice.ANotice;
-import naftoreiclag.laughingnemesis.want.AWant;
+import naftoreiclag.laughingnemesis.memory.notice.Notice;
+import naftoreiclag.laughingnemesis.want.Want;
 
 public class Application
 {
@@ -100,12 +100,12 @@ public class Application
 			painter.print("Name: ");
 			painter.println(analyze.name);
 			painter.println("Notices: ");
-			for(ANotice notice : analyze.notices.data)
+			for(Notice notice : analyze.notices.data)
 			{
 				painter.println(notice.toString());
 			}
 			painter.println("Wants: ");
-			for(AWant want : analyze.wants.data)
+			for(Want want : analyze.wants.data)
 			{
 				painter.println(want.toString());
 			}

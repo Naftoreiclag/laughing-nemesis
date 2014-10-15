@@ -9,18 +9,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 import naftoreiclag.laughingnemesis.Person.Identity;
-import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.memory.Memory;
 import naftoreiclag.laughingnemesis.memory.MemoryFriendship;
-import naftoreiclag.laughingnemesis.want.AWant;
-import naftoreiclag.laughingnemesis.want.WantMakeFriend;
+import naftoreiclag.laughingnemesis.want.Want;
+import naftoreiclag.laughingnemesis.want.MakeFriend;
 
-public class NoticeNumberOfFriends extends ANotice
+public class NoticeNumberOfFriends extends Notice
 {
 	public static final int difficulty = 10;
 	
 	private final int numberOfFriends;
 	
-	private NoticeNumberOfFriends(IExaminer parent, int numberOfFriends)
+	private NoticeNumberOfFriends(Examiner parent, int numberOfFriends)
 	{
 		super(parent, difficulty);
 		
@@ -34,7 +34,7 @@ public class NoticeNumberOfFriends extends ANotice
 	}
 	
 	@Override
-	public boolean equals(ANotice other)
+	public boolean equals(Notice other)
 	{
 		if(!(other instanceof NoticeNumberOfFriends))
 		{
@@ -49,11 +49,11 @@ public class NoticeNumberOfFriends extends ANotice
 	protected static class Examiner implements IExaminer
 	{
 		@Override
-		public ANotice examine(List<AMemory> memories)
+		public Notice examine(List<Memory> memories)
 		{
 			int num = 0;
 			
-			for(AMemory memory : memories)
+			for(Memory memory : memories)
 			{
 				if(memory instanceof MemoryFriendship)
 				{
@@ -66,13 +66,13 @@ public class NoticeNumberOfFriends extends ANotice
 	}
 
 	@Override
-	public List<AWant> whatDoYouWantFromThis(Identity identity)
+	public List<Want> whatDoYouWantFromThis(Identity identity)
 	{
-		List<AWant> ret = new LinkedList<AWant>();
+		List<Want> ret = new LinkedList<Want>();
 		
 		if(numberOfFriends == 0)
 		{
-			ret.add(new WantMakeFriend());
+			ret.add(new MakeFriend());
 		}
 		
 		return ret;

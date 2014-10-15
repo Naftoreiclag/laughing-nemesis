@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import naftoreiclag.laughingnemesis.memory.AMemory;
+import naftoreiclag.laughingnemesis.memory.Memory;
 
 public class NoticeDictionary
 {
@@ -19,13 +19,13 @@ public class NoticeDictionary
 		addExaminer(new NoticeNumberOfFriends.Examiner());
 	}
 	
-	public static List<ANotice> examine(List<AMemory> sample)
+	public static List<Notice> examine(List<Memory> sample)
 	{
-		List<ANotice> notices = new LinkedList<ANotice>();
+		List<Notice> notices = new LinkedList<Notice>();
 		
 		for(IExaminer examiner : examiners)
 		{
-			ANotice nuNotice = examiner.examine(sample);
+			Notice nuNotice = examiner.examine(sample);
 			
 			if(nuNotice != null)
 			{

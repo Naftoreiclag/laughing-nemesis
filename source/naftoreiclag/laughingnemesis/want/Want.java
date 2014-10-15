@@ -3,9 +3,9 @@
  * Distributed under the Apache License Version 2.0 (http://www.apache.org/licenses/)
  * See accompanying file LICENSE
  */
-package naftoreiclag.laughingnemesis.memory;
+package naftoreiclag.laughingnemesis.want;
 
-
-public class MemoryFriendship extends Memory
+public abstract class Want
 {
+	
 }

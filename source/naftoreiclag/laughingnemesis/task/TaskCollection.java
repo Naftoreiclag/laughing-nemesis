@@ -10,14 +10,14 @@ import java.util.List;
 
 public class TaskCollection
 {
-	public List<ATask> data = new LinkedList<ATask>();
+	public List<Task> data = new LinkedList<Task>();
 
-	public void add(List<ATask> tasksToAdd)
+	public void add(List<Task> tasksToAdd)
 	{
-		for(ATask newTaskToAdd : tasksToAdd)
+		for(Task newTaskToAdd : tasksToAdd)
 		{
 			boolean shouldAdd = true;
-			for(ATask comparison : data)
+			for(Task comparison : data)
 			{
 				if(newTaskToAdd.equals(comparison))
 				{
