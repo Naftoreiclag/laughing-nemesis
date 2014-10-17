@@ -5,6 +5,7 @@
  */
 package naftoreiclag.laughingnemesis.task;
 
+// Want
 public class TaskDictionary
 {
 

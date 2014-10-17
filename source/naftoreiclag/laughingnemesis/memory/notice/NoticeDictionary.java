@@ -16,7 +16,7 @@ public class NoticeDictionary
 	public static final List<IExaminer> examiners = new ArrayList<IExaminer>();
 	static
 	{
-		addExaminer(new NoticeNumberOfFriends.Examiner());
+		addExaminer(new NumberOfFriends.Examiner());
 	}
 	
 	public static List<Notice> examine(List<Memory> sample)

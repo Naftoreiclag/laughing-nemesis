@@ -105,7 +105,7 @@ public class Application
 				painter.println(notice.toString());
 			}
 			painter.println("Wants: ");
-			for(Want want : analyze.wants.data)
+			for(Want want : analyze.wants)
 			{
 				painter.println(want.toString());
 			}

@@ -19,6 +19,7 @@ import naftoreiclag.laughingnemesis.memory.notice.NoticeCollection;
 import naftoreiclag.laughingnemesis.memory.notice.NoticeDictionary;
 import naftoreiclag.laughingnemesis.task.Task;
 import naftoreiclag.laughingnemesis.task.TaskCollection;
+import naftoreiclag.laughingnemesis.want.Want;
 import naftoreiclag.laughingnemesis.want.WantCollection;
 
 // Goal is to make as many friends as possible.
@@ -32,8 +33,10 @@ public class Person implements ITickable
 	
 	public MemoryCollection memories = new MemoryCollection();
 	public NoticeCollection notices = new NoticeCollection();
-	public WantCollection wants = new WantCollection();
-	public TaskCollection tasks = new TaskCollection();
+	//public WantCollection wantsc = new WantCollection();
+	public List<Want> wants = new LinkedList<Want>();
+	//public TaskCollection tasksc = new TaskCollection();
+	public List<Task> tasks = new LinkedList<Task>();
 	
 	public Queue<Notice> notices2 = new LinkedList<Notice>();
 	
@@ -85,7 +88,19 @@ public class Person implements ITickable
 		for(Iterator<Notice> iterator = notices2.iterator(); iterator.hasNext();)
 		{
 		    Notice notice = iterator.next();
-			wants.add(notice.whatDoYouWantFromThis(identity));
+		    Want newWant = notice.whatDoYouWantFromThis(identity).get(0);
+			wants.addAll(newWant);
+			
+		    
+			iterator.remove();
+		}
+		
+		for(Iterator<Want> iterator = wants.iterator(); iterator.hasNext();)
+		{
+		    Want want = iterator.next();
+		    
+		    tasks.addAll(TaskGiver.howToAchieve(want));
+			
 			iterator.remove();
 		}
 		
