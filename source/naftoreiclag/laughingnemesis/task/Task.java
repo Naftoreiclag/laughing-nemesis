@@ -5,7 +5,12 @@
  */
 package naftoreiclag.laughingnemesis.task;
 
-public class Task
+import naftoreiclag.laughingnemesis.Body;
+
+public abstract class Task
 {
+	public abstract void tick(double delta);
+
+	public abstract void setBody(Body body);
 	
 }

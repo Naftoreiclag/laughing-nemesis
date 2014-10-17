@@ -38,6 +38,9 @@ public class Person implements ITickable
 	//public TaskCollection tasksc = new TaskCollection();
 	public List<Task> tasks = new LinkedList<Task>();
 	
+	// im insane
+	public Task currentTask = null;
+	
 	public Queue<Notice> notices2 = new LinkedList<Notice>();
 	
 	// Brainily
@@ -45,7 +48,6 @@ public class Person implements ITickable
 	public Identity identity = new Identity();
 	public Stamina brainStamina = new Stamina();
 	public List<Task> queuedTasks = new LinkedList<Task>();
-	public Task currentTask;
 	
 	public Person(World world)
 	{
@@ -89,19 +91,24 @@ public class Person implements ITickable
 		{
 		    Notice notice = iterator.next();
 		    Want newWant = notice.whatDoYouWantFromThis(identity).get(0);
-			wants.addAll(newWant);
+			wants.add(newWant);
+			tasks.addAll(TaskGiver.howToAchieve(newWant));
 			
 		    
 			iterator.remove();
 		}
 		
-		for(Iterator<Want> iterator = wants.iterator(); iterator.hasNext();)
+		if(currentTask == null)
 		{
-		    Want want = iterator.next();
-		    
-		    tasks.addAll(TaskGiver.howToAchieve(want));
-			
-			iterator.remove();
+			if(tasks.size() > 0)
+			{
+				currentTask = tasks.get(0);
+			}
+		}
+		else
+		{
+			currentTask.setBody(body);
+			currentTask.tick(delta);
 		}
 		
 		debugMessagesTick(delta);

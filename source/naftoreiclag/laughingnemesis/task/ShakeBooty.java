@@ -5,8 +5,24 @@
  */
 package naftoreiclag.laughingnemesis.task;
 
+import naftoreiclag.laughingnemesis.Body;
+
 // this is how you make friends, obviously
 public class ShakeBooty extends Task
 {
+	Body body;
+
+	@Override
+	public void tick(double delta)
+	{
+		body.lookAngle += delta * 0.5d;
+		
+	}
+
+	@Override
+	public void setBody(Body body)
+	{
+		this.body = body;
+	}
 	
 }
