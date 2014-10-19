@@ -66,7 +66,7 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 
 		(new Thread()
 		{
-			double fastForward = 5.0d;
+			double fastForward = 2.0d;
 			
 			long lastTick = System.currentTimeMillis();
 			long delta;

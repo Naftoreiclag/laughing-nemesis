@@ -16,6 +16,7 @@ public class FindSomeone extends Task
 	double targetAngle;
 	
 	double radPerSec = 1d;
+	double timer = 5d;
 	
 	boolean completed = false;
 
@@ -35,7 +36,14 @@ public class FindSomeone extends Task
 		{
 			targetAngle = body.circle.loc.angleTo(target.body.circle.loc);
 			
+			
 			body.lookAngle.tweenLocal(targetAngle, delta * radPerSec);
+			
+			timer -= delta;
+			if(timer < 0)
+			{
+				completed = true;
+			}
 			
 			//completed = true;
 		}

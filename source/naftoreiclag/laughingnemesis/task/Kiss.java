@@ -13,7 +13,7 @@ public class Kiss extends Task
 	Body body;
 	Person target;
 	
-	
+	double timer = 5d;
 
 	public Kiss(Body body, Person target)
 	{
@@ -24,6 +24,16 @@ public class Kiss extends Task
 	@Override
 	public void tick(double delta)
 	{
+		timer -= delta;
+		
+		if(timer > 0)
+		{
+			body.walking = true;
+		}
+		else
+		{
+			body.walking = false;
+		}
 	}
 
 	@Override

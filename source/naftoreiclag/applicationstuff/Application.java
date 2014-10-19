@@ -99,6 +99,12 @@ public class Application
 			
 			painter.print("Name: ");
 			painter.println(analyze.name);
+			String taskname = "";
+			if(analyze.currentTask != null)
+			{
+				taskname = analyze.currentTask.toString();
+			}
+			painter.println("Current Task: " + taskname);
 			painter.println("Notices: ");
 			for(Notice notice : analyze.notices.data)
 			{
