@@ -12,5 +12,8 @@ public abstract class Task
 	public abstract void tick(double delta);
 
 	public abstract void setBody(Body body);
-	
+
+	public abstract boolean isCompleted();
+
+	public abstract Task getCompletionState();
 }

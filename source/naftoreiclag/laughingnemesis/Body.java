@@ -18,32 +18,7 @@ public class Body implements ITickable
 	{
 		this.world = world;
 		circle = new Circle(Vector2d.randomNormal().multiplyLocal(50d), 20, 1);
-	}	
-	/*
-	public Person findNearestPerson()
-	{
-		Person nearest = null;
-		double bestDist = Double.MAX_VALUE;
-		
-		for(Person person : world.people)
-		{
-			if(person == this)
-			{
-				continue;
-			}
-			
-			double distanceToThisPerson = person.circle.loc.distanceSquared(this.circle.loc);
-			
-			if(distanceToThisPerson < bestDist)
-			{
-				nearest = person;
-				bestDist = distanceToThisPerson;
-			}
-		}
-		
-		return nearest;
 	}
-	*/
 	
 	@Override
 	public void tick(double delta)

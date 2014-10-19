@@ -69,6 +69,8 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 			long lastTick = System.currentTimeMillis();
 			long delta;
 			
+			long minTimeBetweenDelta = 20;
+			
 			int fpsCounter = 0;
 			long lastPrint = lastTick;
 			
@@ -79,7 +81,7 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 				{
 					delta = System.currentTimeMillis() - lastTick;
 					
-					if(delta > 10d)
+					if(delta > minTimeBetweenDelta)
 					{
 						lastTick = System.currentTimeMillis();
 						

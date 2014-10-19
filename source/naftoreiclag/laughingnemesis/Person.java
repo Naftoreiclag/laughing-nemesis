@@ -33,9 +33,7 @@ public class Person implements ITickable
 	
 	public MemoryCollection memories = new MemoryCollection();
 	public NoticeCollection notices = new NoticeCollection();
-	//public WantCollection wantsc = new WantCollection();
 	public List<Want> wants = new LinkedList<Want>();
-	//public TaskCollection tasksc = new TaskCollection();
 	public List<Task> tasks = new LinkedList<Task>();
 	
 	// im insane
@@ -109,6 +107,11 @@ public class Person implements ITickable
 		{
 			currentTask.setBody(body);
 			currentTask.tick(delta);
+			
+			if(currentTask.isCompleted())
+			{
+				currentTask = currentTask.getCompletionState();
+			}
 		}
 		
 		debugMessagesTick(delta);
