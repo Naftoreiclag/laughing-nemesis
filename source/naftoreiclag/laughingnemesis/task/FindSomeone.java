@@ -12,7 +12,10 @@ public class FindSomeone extends Task
 {
 	Body body;
 	
-	Person target;
+	Person target = null;
+	double targetAngle;
+	
+	double radPerSec = 0.5d;
 	
 	boolean completed = false;
 
@@ -28,8 +31,15 @@ public class FindSomeone extends Task
 		{
 			target = findNearestPerson();
 		}
+		else
+		{
+			targetAngle = body.circle.loc.angleTo(target.body.circle.loc);
+			
+			body.lookAngle.tweenLocal(targetAngle, delta * radPerSec);
+			
+			//completed = true;
+		}
 		
-		completed = true;
 	}
 	
 	public Person findNearestPerson()

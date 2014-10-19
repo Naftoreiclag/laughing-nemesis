@@ -12,7 +12,7 @@ public class Body implements ITickable
 
 	
 	public World world;
-	public double lookAngle = GR.r.nextDouble() * Math.PI * 2d;
+	public Angled lookAngle = new Angled(GR.r.nextDouble() * Math.PI * 2d);
 	
 	public Body(World world)
 	{
@@ -26,7 +26,7 @@ public class Body implements ITickable
 		stamina.tick(delta);
 		if(walking)
 		{
-			Vector2d what = Vector2d.getNormalFromAngle(lookAngle);
+			Vector2d what = Vector2d.getNormalFromAngle(lookAngle.d);
 			circle.motion = what.multiplyLocal(30);
 		}
 	}

@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import naftoreiclag.laughingnemesis.task.FindSomeone;
 import naftoreiclag.laughingnemesis.task.ShakeBooty;
 import naftoreiclag.laughingnemesis.task.Task;
 import naftoreiclag.laughingnemesis.want.Want;
@@ -19,7 +20,7 @@ public class TaskGiver
 	{
 		List<Task> ret = new LinkedList<Task>();
 		
-		ret.add(new ShakeBooty());
+		ret.add(new FindSomeone());
 		
 		return ret;
 	}

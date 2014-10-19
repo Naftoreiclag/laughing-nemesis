@@ -68,10 +68,10 @@ public class Application
 			painter.translate(body.circle.loc.a, body.circle.loc.b);
 			
 			painter.drawCircle(0, 0, 20);
-			painter.drawLine(Math.cos(body.lookAngle - Body.fov) * 25, Math.sin(body.lookAngle - Body.fov) * 25, 
-					Math.cos(body.lookAngle - Body.fov) * 20, Math.sin(body.lookAngle - Body.fov) * 20);
-			painter.drawLine(Math.cos(body.lookAngle + Body.fov) * 25, Math.sin(body.lookAngle + Body.fov) * 25, 
-					Math.cos(body.lookAngle + Body.fov) * 20, Math.sin(body.lookAngle + Body.fov) * 20);
+			painter.drawLine(Math.cos(body.lookAngle.d - Body.fov) * 25, Math.sin(body.lookAngle.d - Body.fov) * 25, 
+					Math.cos(body.lookAngle.d - Body.fov) * 20, Math.sin(body.lookAngle.d - Body.fov) * 20);
+			painter.drawLine(Math.cos(body.lookAngle.d + Body.fov) * 25, Math.sin(body.lookAngle.d + Body.fov) * 25, 
+					Math.cos(body.lookAngle.d + Body.fov) * 20, Math.sin(body.lookAngle.d + Body.fov) * 20);
 			
 			painter.drawStringCentered(person.name, 0, -30);
 

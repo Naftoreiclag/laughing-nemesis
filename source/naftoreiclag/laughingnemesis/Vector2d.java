@@ -202,4 +202,9 @@ public class Vector2d
 	{
 		return this.clone().perpendicularLocal();
 	}
+
+	public double angleTo(Vector2d loc)
+	{
+		return Math.atan2(loc.b - this.b, loc.a - this.a);
+	}
 }

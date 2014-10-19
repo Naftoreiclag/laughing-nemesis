@@ -15,7 +15,7 @@ public class ShakeBooty extends Task
 	@Override
 	public void tick(double delta)
 	{
-		body.lookAngle += delta * 0.5d;
+		body.lookAngle.d += delta * 0.5d;
 	}
 
 	@Override
