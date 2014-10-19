@@ -205,6 +205,8 @@ public class Vector2d
 
 	public double angleTo(Vector2d loc)
 	{
-		return Math.atan2(loc.b - this.b, loc.a - this.a);
+		double ang = Math.atan2(loc.b - this.b, loc.a - this.a);
+		
+		return ang > 0 ? ang : ang + Math.PI * 2;
 	}
 }
