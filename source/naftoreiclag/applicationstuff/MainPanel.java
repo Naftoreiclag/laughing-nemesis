@@ -66,6 +66,8 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 
 		(new Thread()
 		{
+			double fastForward = 5.0d;
+			
 			long lastTick = System.currentTimeMillis();
 			long delta;
 			
@@ -85,7 +87,7 @@ public class MainPanel extends JPanel implements MouseMotionListener, KeyListene
 					{
 						lastTick = System.currentTimeMillis();
 						
-						if(Application.staticTick(delta / 1000d))
+						if(Application.staticTick(delta * 0.001d * fastForward))
 						{
 						}
 						repaint();

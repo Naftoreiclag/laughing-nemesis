@@ -7,26 +7,32 @@ package naftoreiclag.laughingnemesis;
 
 public class Angled
 {
-	public double d;
+	public double a;
 	
 	public Angled(double x)
 	{
-		this.d = x;
+		this.a = x;
 	}
 	
 	public Angled tweenLocal(double other, double amount)
 	{
-		double diff = (other + 8d) - (d + 8d);
+		double diff = other - this.a;
 		double sig = Math.signum(diff);
 		
 		if(diff * sig < amount)
 		{
-			this.d = other;
+			this.a = other;
 		}
 		else
 		{
-			this.d += sig * amount;
+			if(diff * sig > Math.PI)
+			{
+				sig = -sig;
+			}
+			
+			this.a += amount * sig;
 		}
+		
 		
 		return this;
 	}

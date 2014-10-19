@@ -15,7 +15,7 @@ public class FindSomeone extends Task
 	Person target = null;
 	double targetAngle;
 	
-	double radPerSec = 0.5d;
+	double radPerSec = 1d;
 	
 	boolean completed = false;
 

@@ -26,7 +26,7 @@ public class Body implements ITickable
 		stamina.tick(delta);
 		if(walking)
 		{
-			Vector2d what = Vector2d.getNormalFromAngle(lookAngle.d);
+			Vector2d what = Vector2d.getNormalFromAngle(lookAngle.a);
 			circle.motion = what.multiplyLocal(30);
 		}
 	}
