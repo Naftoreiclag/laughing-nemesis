@@ -30,7 +30,7 @@ public class Angled
 				sig = -sig;
 			}
 			
-			this.a += amount * sig;
+			this.a = (this.a + (amount * sig)) % (Math.PI * 2);
 		}
 		
 		
