@@ -6,20 +6,21 @@
 package naftoreiclag.laughingnemesis.task;
 
 import naftoreiclag.laughingnemesis.Body;
+import naftoreiclag.laughingnemesis.Person;
 
 // this is how you make friends, obviously
 public class ShakeBooty extends Task
 {
-	Body body;
+	Person body;
 
 	@Override
 	public void tick(double delta)
 	{
-		body.lookAngle.a += delta * 0.5d;
+		body.body.lookAngle.a += delta * 0.5d;
 	}
 
 	@Override
-	public void setBody(Body body)
+	public void setBody(Person body)
 	{
 		this.body = body;
 	}

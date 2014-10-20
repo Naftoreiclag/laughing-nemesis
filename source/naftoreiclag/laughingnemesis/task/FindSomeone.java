@@ -10,7 +10,7 @@ import naftoreiclag.laughingnemesis.Person;
 
 public class FindSomeone extends Task
 {
-	Body body;
+	Person body;
 	
 	Person target = null;
 	double targetAngle;
@@ -34,10 +34,10 @@ public class FindSomeone extends Task
 		}
 		else
 		{
-			targetAngle = body.circle.loc.angleTo(target.body.circle.loc);
+			targetAngle = body.body.circle.loc.angleTo(target.body.circle.loc);
 			
 			
-			body.lookAngle.tweenLocal(targetAngle, delta * radPerSec);
+			body.body.lookAngle.tweenLocal(targetAngle, delta * radPerSec);
 			
 			timer -= delta;
 			if(timer < 0)
@@ -55,14 +55,14 @@ public class FindSomeone extends Task
 		Person nearest = null;
 		double bestDist = Double.MAX_VALUE;
 		
-		for(Person person : body.world.people)
+		for(Person person : body.body.world.people)
 		{
-			if(person.body == this.body)
+			if(person.body == this.body.body)
 			{
 				continue;
 			}
 			
-			double distanceToThisPerson = person.body.circle.loc.distanceSquared(this.body.circle.loc);
+			double distanceToThisPerson = person.body.circle.loc.distanceSquared(this.body.body.circle.loc);
 			
 			if(distanceToThisPerson < bestDist)
 			{
@@ -75,7 +75,7 @@ public class FindSomeone extends Task
 	}
 
 	@Override
-	public void setBody(Body body)
+	public void setBody(Person body)
 	{
 		this.body = body;
 	}

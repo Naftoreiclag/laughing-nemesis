@@ -105,7 +105,7 @@ public class Person implements ITickable
 		}
 		else
 		{
-			currentTask.setBody(body);
+			currentTask.setBody(this);
 			currentTask.tick(delta);
 			
 			if(currentTask.isCompleted())

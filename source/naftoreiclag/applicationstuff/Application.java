@@ -102,7 +102,7 @@ public class Application
 			String taskname = "";
 			if(analyze.currentTask != null)
 			{
-				taskname = analyze.currentTask.toString();
+				taskname = analyze.currentTask.getClass().getSimpleName();
 			}
 			painter.println("Current Task: " + taskname);
 			painter.println("Notices: ");

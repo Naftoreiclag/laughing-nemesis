@@ -8,4 +8,6 @@ package naftoreiclag.laughingnemesis.memory;
 
 public class MemoryFriendship extends Memory
 {
+	
+	
 }
