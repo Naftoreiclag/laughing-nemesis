@@ -11,7 +11,7 @@ public abstract class Task
 {
 	public abstract void tick(double delta);
 
-	public abstract void setBody(Person body);
+	public abstract void setPerson(Person body);
 
 	public abstract boolean isCompleted();
 

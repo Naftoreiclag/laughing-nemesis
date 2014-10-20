@@ -20,7 +20,7 @@ public class ShakeBooty extends Task
 	}
 
 	@Override
-	public void setBody(Person body)
+	public void setPerson(Person body)
 	{
 		this.body = body;
 	}

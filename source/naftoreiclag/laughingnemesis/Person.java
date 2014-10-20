@@ -88,7 +88,16 @@ public class Person implements ITickable
 		for(Iterator<Notice> iterator = notices2.iterator(); iterator.hasNext();)
 		{
 		    Notice notice = iterator.next();
+		    
+		    List<Want> wants = notice.whatDoYouWantFromThis(identity);
+		    
+		    if(wants.size() <= 0)
+		    {
+		    	continue;
+		    }
+		    
 		    Want newWant = notice.whatDoYouWantFromThis(identity).get(0);
+		    
 			wants.add(newWant);
 			tasks.addAll(TaskGiver.howToAchieve(newWant));
 			
@@ -101,11 +110,12 @@ public class Person implements ITickable
 			if(tasks.size() > 0)
 			{
 				currentTask = tasks.get(0);
+				tasks.remove(0);
 			}
 		}
 		else
 		{
-			currentTask.setBody(this);
+			currentTask.setPerson(this);
 			currentTask.tick(delta);
 			
 			if(currentTask.isCompleted())

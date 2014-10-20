@@ -7,10 +7,11 @@ package naftoreiclag.laughingnemesis.task;
 
 import naftoreiclag.laughingnemesis.Body;
 import naftoreiclag.laughingnemesis.Person;
+import naftoreiclag.laughingnemesis.memory.MemoryFriendship;
 
 public class Kiss extends Task
 {
-	Person body;
+	Person person;
 	Person target;
 	
 	
@@ -19,9 +20,9 @@ public class Kiss extends Task
 	
 	boolean completed = false;
 
-	public Kiss(Person body, Person target)
+	public Kiss(Person person, Person target)
 	{
-		this.body = body;
+		this.person = person;
 		this.target = target;
 	}
 
@@ -32,18 +33,20 @@ public class Kiss extends Task
 		
 		if(timer > 0)
 		{
-			body.body.walking = true;
+			person.body.walking = true;
 		}
 		else
 		{
-			body.body.walking = false;
+			person.body.walking = false;
+			
+			person.memories.data.add(new MemoryFriendship());
 			
 			completed = true;
 		}
 	}
 
 	@Override
-	public void setBody(Person body)
+	public void setPerson(Person body)
 	{
 	}
 
