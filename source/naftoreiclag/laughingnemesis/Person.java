@@ -154,10 +154,10 @@ public class Person implements ITickable
 			if(GR.chanceHertz(delta, hertz))
 			{
 				debug("thunk");
-				List<Memory> sample = memories.getRandomMemories();
-				List<Notice> noticez = NoticeDictionary.examine(sample);
+				List<Memory> sample = memories.getRandomSample();
+				List<Notice> interestingData = NoticeDictionary.examine(sample);
 				
-				notices.add(noticez);
+				notices2.addAll(interestingData);
 			}
 		}
 	}

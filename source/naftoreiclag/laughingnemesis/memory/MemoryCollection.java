@@ -30,7 +30,7 @@ public class MemoryCollection implements ITickable
 
 	}
 
-	public List<Memory> getRandomMemories()
+	public List<Memory> getRandomSample()
 	{
 		List<Memory> ret = new LinkedList<Memory>();
 		for(int i = 0; i < data.size(); ++ i)

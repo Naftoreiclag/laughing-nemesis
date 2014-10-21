@@ -13,12 +13,19 @@ import naftoreiclag.laughingnemesis.memory.Memory;
 
 public class NoticeDictionary
 {
+	// Functional instances to examine a list of memories
 	public static final List<IExaminer> examiners = new ArrayList<IExaminer>();
 	static
 	{
 		addExaminer(new NumberOfFriends.Examiner());
 	}
 	
+	public static void addExaminer(IExaminer examiner)
+	{
+		examiners.add(examiner);
+	}
+	
+	// Given a sample of memories, return a list of all things which are true for this sample.
 	public static List<Notice> examine(List<Memory> sample)
 	{
 		List<Notice> notices = new LinkedList<Notice>();
@@ -34,10 +41,5 @@ public class NoticeDictionary
 		}
 		
 		return notices;
-	}
-	
-	public static void addExaminer(IExaminer examiner)
-	{
-		examiners.add(examiner);
 	}
 }
