@@ -7,5 +7,5 @@ package naftoreiclag.laughingnemesis;
 
 public class STMemory
 {
-
+ 
 }
